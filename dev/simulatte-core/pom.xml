@@ -15,6 +15,8 @@
     <description>simulatte-core</description>
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <!-- ADS LOCAL -->
@@ -35,16 +37,6 @@
         <!-- end ADS LOCAL -->
     </dependencies>
 
-    <!--======================= -->
-    <!-- BUILD PROCESS & LAYOUT -->
-    <!--======================= -->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+ 
 
 </project>
