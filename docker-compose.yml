@@ -1,0 +1,163 @@
+version: '3.9'
+services:
+  simulation-service:
+    image: simulatte/simulation-service:latest
+    build:
+      context: dev/simulatte-online/
+    volumes:
+      - $PWD:/home/jovyan/work
+      - $HOME/.m2:/root/.m2 # Mount your local Maven repository into build container to prevent repeated downloads
+    container_name: simulation-service
+    restart: on-failure
+    ports:
+      - "8080:8080" #Java server
+      - "4040:4040" #Spark UI 
+    depends_on:
+      simulatte-db:
+         condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://simulatte-db:5432/simulatte
+      - SPRING_DATASOURCE_USERNAME=simulatte
+      - SPRING_DATASOURCE_PASSWORD=simulatte
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  
+  analytic-service:
+    image: simulatte/analytic-service
+    build:
+      context: dev/simulatte-analytic/
+      dockerfile: Dockerfile
+    volumes:
+      - $PWD:/home/jovyan/work
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: analytic-service
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=simulatte
+      - POSTGRES_USER=simulatte
+      - POSTGRES_PASSWORD=simulatte
+      - POSTGRES_HOST=simulatte-db
+    depends_on:
+      simulatte-db:
+         condition: service_healthy
+  
+  notebooks:
+    image: simulatte/notebooks
+    build:
+      context: notebooks/
+    container_name: simulatte/notebooks
+    restart: on-failure
+    ports:
+      - "8888:8888"
+    environment:
+      - BASE_DIR=/home/jovyan/work
+      - SIMULATION_SERVER_HOSTNAME=simulation-service
+      - ANALYTIC_SERVER_HOSTNAME=analytic-service
+    volumes:
+      - $PWD:/home/jovyan/work
+
+  odm:
+    image: icr.io/odm-k8s/odm:8.11
+    container_name: odm-k8s
+    restart: on-failure
+    ports:
+      - "9060:9060"
+      - "9443:9443"
+    environment:
+      - JVM_ARGS='-Xmx3000m'
+      - LICENSE=accept
+      - SAMPLE=false
+    volumes:
+      - ./libs/ODM/docker/miniloan:/config/dbdata/
+
+        
+  simulatte-db:
+    image: simulatte/database
+    build:
+      context: dev/simulatte-online/database/
+    container_name: simulatte-db
+    volumes:
+      - ./data/simulatte-db:/var/lib/postgresql/
+      - ./data/simulatte-db/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=simulatte
+      - POSTGRES_USER=simulatte
+      - POSTGRES_DB=simulatte
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U simulatte"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./dev/simulatte-online/monitoring/prometheus:/etc/prometheus/
+      - ./data/prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
+
+  #telegraf:
+  #  runtime: nvidia
+  #  environment:
+  #    - NVIDIA_VISIBLE_DEVICES=all
+  #  volumes:
+  #    - ./docker/telegraf/telegraf-gpu.conf:/etc/telegraf/telegraf.conf
+
+
+  grafana:
+    image: grafana/grafana
+    pull_policy: always
+    container_name: grafana
+    restart: unless-stopped
+    links:
+      - prometheus:prometheus
+    volumes:  
+      - ./data/grafana:/var/lib/grafana
+      - ./dev/simulatte-online/monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./dev/simulatte-online/monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SERVER_DOMAIN=localhost
+    ports:
+      - "3000:3000"
+
+
+#  alertmanager:
+#    container_name: alertmanager
+#    hostname: alertmanager
+#    image: prom/alertmanager
+#    volumes:
+#      - ./alertmanager.conf:/etc/alertmanager/alertmanager.conf
+#    command:
+#      - '--config.file=/etc/alertmanager/alertmanager.conf'
+#    ports:
+#      - 9093:9093
+
+  #localstack:
+  #  container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+  #  image: localstack/localstack:latest
+  #  network_mode: bridge
+  #  ports:
+  #    - "4567-4584:4567-4584"
+  #    - "8055:8080"
+  #  environment:
+  #    - SERVICES=s3
+  #    - DEBUG=1
+  #    - DATA_DIR=/var/folders/51/fmq0x9kd393g91nzkqpbjvh00000gn/T/localstack/data
+  #  volumes:
+  #    - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
+  #    - "/var/run/docker.sock:/var/run/docker.sock"
+#volumes:
+  #notebooks:
+    #external: true
+

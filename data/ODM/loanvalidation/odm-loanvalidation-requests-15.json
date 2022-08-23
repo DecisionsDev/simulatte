@@ -1,0 +1,15 @@
+{"borrower": {"name": "Daniel Martin", "creditScore": 736, "yearlyIncome": 113243}, "loan": {"amount": 783440, "duration": 162, "yearlyInterestRate": 0.03000493351324669, "yearlyRepayment": 70648}}
+{"borrower": {"name": "Laurie Weber", "creditScore": 527, "yearlyIncome": 224186}, "loan": {"amount": 1787385, "duration": 183, "yearlyInterestRate": 0.054819346831766216, "yearlyRepayment": 173197}}
+{"borrower": {"name": "Phillip Salazar", "creditScore": 460, "yearlyIncome": 39954}, "loan": {"amount": 1733494, "duration": 75, "yearlyInterestRate": 0.05518332072079993, "yearlyRepayment": 328563}}
+{"borrower": {"name": "Rachel Carlson", "creditScore": 751, "yearlyIncome": 219998}, "loan": {"amount": 1350004, "duration": 72, "yearlyInterestRate": 0.043400012749075165, "yearlyRepayment": 255970}}
+{"borrower": {"name": "Walter Thomas", "creditScore": 684, "yearlyIncome": 72470}, "loan": {"amount": 1210944, "duration": 160, "yearlyInterestRate": 0.037772154404546995, "yearlyRepayment": 115742}}
+{"borrower": {"name": "Cheryl Garner", "creditScore": 706, "yearlyIncome": 267823}, "loan": {"amount": 424711, "duration": 116, "yearlyInterestRate": 0.04839076170215596, "yearlyRepayment": 55096}}
+{"borrower": {"name": "Ashley Lewis", "creditScore": 306, "yearlyIncome": 164748}, "loan": {"amount": 78014, "duration": 357, "yearlyInterestRate": 0.04873588369923313, "yearlyRepayment": 4971}}
+{"borrower": {"name": "Emily Nichols", "creditScore": 309, "yearlyIncome": 30573}, "loan": {"amount": 902185, "duration": 109, "yearlyInterestRate": 0.03480434343223295, "yearlyRepayment": 115991}}
+{"borrower": {"name": "Gregory Reynolds", "creditScore": 822, "yearlyIncome": 59518}, "loan": {"amount": 1724869, "duration": 299, "yearlyInterestRate": 0.042251544635427817, "yearlyRepayment": 112054}}
+{"borrower": {"name": "Paul Wallace", "creditScore": 745, "yearlyIncome": 270265}, "loan": {"amount": 1436739, "duration": 153, "yearlyInterestRate": 0.03663593551655232, "yearlyRepayment": 141213}}
+{"borrower": {"name": "Justin Long", "creditScore": 563, "yearlyIncome": 197471}, "loan": {"amount": 1020754, "duration": 150, "yearlyInterestRate": 0.03579582869224479, "yearlyRepayment": 101407}}
+{"borrower": {"name": "Stephanie Reeves MD", "creditScore": 617, "yearlyIncome": 100671}, "loan": {"amount": 307589, "duration": 214, "yearlyInterestRate": 0.049964384137521634, "yearlyRepayment": 26092}}
+{"borrower": {"name": "Kelly Mclaughlin", "creditScore": 757, "yearlyIncome": 13968}, "loan": {"amount": 63800, "duration": 340, "yearlyInterestRate": 0.050517517159977, "yearlyRepayment": 4239}}
+{"borrower": {"name": "Ryan Cardenas", "creditScore": 665, "yearlyIncome": 147611}, "loan": {"amount": 1050339, "duration": 300, "yearlyInterestRate": 0.044572988776821865, "yearlyRepayment": 69752}}
+{"borrower": {"name": "Melissa Hayes", "creditScore": 839, "yearlyIncome": 182984}, "loan": {"amount": 103722, "duration": 72, "yearlyInterestRate": 0.03809361739542953, "yearlyRepayment": 19365}}

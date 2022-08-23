@@ -1,0 +1,1011 @@
+{
+  "executionDate": "2022-06-24T09:13:21.286+0000",
+  "executionDuration": 66,
+  "rulesetProperties": {
+    "property": [
+      {
+        "value": "Miniloan Service",
+        "name": "decisionservice.name"
+      },
+      {
+        "value": "false",
+        "name": "ruleset.debug.enabled"
+      },
+      {
+        "value": "true",
+        "name": "ruleset.trace.enabled"
+      },
+      {
+        "value": "http://localhost:9060/decisioncenter?datasource=jdbc%2FilogDataSource",
+        "name": "decisioncenter.url"
+      },
+      {
+        "value": "dsm.Operation:1:4",
+        "name": "decisionservice.operation.id"
+      },
+      {
+        "value": "Miniloan ServiceOperation",
+        "name": "decisionservice.operation.name"
+      },
+      {
+        "value": "enabled",
+        "name": "ruleset.status"
+      },
+      {
+        "value": "dsm.Deployment:7:7",
+        "name": "decisionservice.deploymentConfiguration.id"
+      },
+      {
+        "value": "odmAdmin",
+        "name": "decisionservice.deployer.name"
+      },
+      {
+        "value": "odmAdmin",
+        "name": "decisionservice.deployer.id"
+      },
+      {
+        "value": "de",
+        "name": "ruleset.engine"
+      },
+      {
+        "value": "e2b073e9-36d2-40a8-ad2b-51db1e3e26f0",
+        "name": "ruleset.uuid"
+      },
+      {
+        "value": "http://localhost:9060/decisioncenter/t/library#overviewbranch?datasource=jdbc%2FilogDataSource&baselineId=brm.Branch%3A1%3A1",
+        "name": "decisionservice.branch.url"
+      },
+      {
+        "value": "tiemoko-miniloan",
+        "name": "decisionservice.deploymentConfiguration.name"
+      },
+      {
+        "value": "brm.Branch:1:1",
+        "name": "decisionservice.branch.id"
+      },
+      {
+        "value": "reslib://miniloan_library/1.0",
+        "name": "ruleset.managedxom.uris"
+      },
+      {
+        "value": "main",
+        "name": "decisionservice.branch.name"
+      },
+      {
+        "value": "brm.RuleProject:1:1",
+        "name": "decisionservice.id"
+      },
+      {
+        "value": "Decision Center 8.11.0.0",
+        "name": "decisioncenter.version"
+      },
+      {
+        "value": "1.40.11",
+        "name": "ruleset.engine.version"
+      },
+      {
+        "value": "branch",
+        "name": "decisionservice.branch.type"
+      }
+    ]
+  },
+  "systemProperties": {
+    "property": [
+      {
+        "value": "IBM Corporation",
+        "name": "java.vendor"
+      },
+      {
+        "value": "SUN_STANDARD",
+        "name": "sun.java.launcher"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/shared/resources/",
+        "name": "shared.resource.dir"
+      },
+      {
+        "value": "Linux",
+        "name": "os.name"
+      },
+      {
+        "value": "37602915336",
+        "name": "kernel.launch.time"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/amd64/compressedrefs/jclSC180/vm.jar:/opt/ibm/java/jre/lib/se-service.jar:/opt/ibm/java/jre/lib/math.jar:/opt/ibm/java/jre/lib/ibmorb.jar:/opt/ibm/java/jre/lib/ibmorbapi.jar:/opt/ibm/java/jre/lib/ibmcfw.jar:/opt/ibm/java/jre/lib/ibmpkcs.jar:/opt/ibm/java/jre/lib/ibmcertpathfw.jar:/opt/ibm/java/jre/lib/ibmjgssfw.jar:/opt/ibm/java/jre/lib/ibmjssefw.jar:/opt/ibm/java/jre/lib/ibmsaslfw.jar:/opt/ibm/java/jre/lib/ibmjcefw.jar:/opt/ibm/java/jre/lib/ibmjgssprovider.jar:/opt/ibm/java/jre/lib/ibmjsseprovider2.jar:/opt/ibm/java/jre/lib/ibmcertpathprovider.jar:/opt/ibm/java/jre/lib/xmldsigfw.jar:/opt/ibm/java/jre/lib/xml.jar:/opt/ibm/java/jre/lib/charsets.jar:/opt/ibm/java/jre/lib/resources.jar:/opt/ibm/java/jre/lib/rt.jar:/opt/ibm/java/jre/lib/dataaccess.jar",
+        "name": "sun.boot.class.path"
+      },
+      {
+        "value": "Oracle Corporation",
+        "name": "java.vm.specification.vendor"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/shared/apps/",
+        "name": "shared.app.dir"
+      },
+      {
+        "value": "8.0.6.36 - pxa6480sr6fp36-20210824_02(SR6 FP36)",
+        "name": "java.runtime.version"
+      },
+      {
+        "value": "/opt/ibm/wlp/lib/",
+        "name": "wlp.lib.dir"
+      },
+      {
+        "value": "workarea/",
+        "name": "wlp.workarea.dir"
+      },
+      {
+        "value": "default",
+        "name": "user.name"
+      },
+      {
+        "value": "j9jit29",
+        "name": "java.compiler"
+      },
+      {
+        "value": "UTF-8",
+        "name": "os.encoding"
+      },
+      {
+        "value": "",
+        "name": "com.ibm.util.extralibs.properties"
+      },
+      {
+        "value": "/tmp/decisioncenter-solr-v6/dc",
+        "name": "dataDir"
+      },
+      {
+        "value": "",
+        "name": "com.ibm.jcl.checkClassPath"
+      },
+      {
+        "value": "/opt/ibm/wlp/output/defaultServer/workarea/tmp/",
+        "name": "server.tmp.dir"
+      },
+      {
+        "value": "en",
+        "name": "user.language"
+      },
+      {
+        "value": "true",
+        "name": "jdk.attach.allowAttachSelf"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/amd64/compressedrefs:/opt/ibm/java/jre/lib/amd64",
+        "name": "com.ibm.oti.vm.bootstrap.library.path"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/servers/defaultServer/variables/",
+        "name": "wlp.var.src.dirs"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/amd64/compressedrefs:/opt/ibm/java/jre/lib/amd64",
+        "name": "sun.boot.library.path"
+      },
+      {
+        "value": "/opt/ibm/wlp/",
+        "name": "wlp.install.dir"
+      },
+      {
+        "value": "/opt/ibm/wlp/output/defaultServer/",
+        "name": "server.output.dir"
+      },
+      {
+        "value": "33",
+        "name": "PID"
+      },
+      {
+        "value": "com.ibm.ws.kernel.boot.logging.WsLogManager",
+        "name": "java.util.logging.manager"
+      },
+      {
+        "value": "1.8.0_301",
+        "name": "java.version"
+      },
+      {
+        "value": "Europe/Paris",
+        "name": "user.timezone"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/amd64",
+        "name": "com.ibm.system.agent.path"
+      },
+      {
+        "value": "64",
+        "name": "sun.arch.data.model"
+      },
+      {
+        "value": "2",
+        "name": "com.ibm.zero.version"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/endorsed",
+        "name": "java.endorsed.dirs"
+      },
+      {
+        "value": "29",
+        "name": "com.ibm.oti.vm.library.version"
+      },
+      {
+        "value": "UTF-8",
+        "name": "sun.jnu.encoding"
+      },
+      {
+        "value": "sun.io",
+        "name": "file.encoding.pkg"
+      },
+      {
+        "value": "com.ibm.wsspi.zos.tx.RRSTXSynchronizationManager",
+        "name": "com.ibm.db2.java.TMClassName"
+      },
+      {
+        "value": "/",
+        "name": "file.separator"
+      },
+      {
+        "value": "Java Platform API Specification",
+        "name": "java.specification.name"
+      },
+      {
+        "value": "false",
+        "name": "osgi.checkConfiguration"
+      },
+      {
+        "value": "52.0",
+        "name": "java.class.version"
+      },
+      {
+        "value": "98607f93c7833e7dc59489b13f3cb0a114fb9f4c",
+        "name": "jetty.git.hash"
+      },
+      {
+        "value": "false",
+        "name": "com.ibm.ws.beta.edition"
+      },
+      {
+        "value": "US",
+        "name": "user.country"
+      },
+      {
+        "value": "/opt/ibm/java/jre",
+        "name": "java.home"
+      },
+      {
+        "value": "JRE 1.8.0 Linux amd64-64-Bit Compressed References 20210824_12036 (JIT enabled, AOT enabled)\nOpenJ9   - 7bb9176\nOMR      - 820a5aa\nIBM      - dc8f23e",
+        "name": "java.vm.info"
+      },
+      {
+        "value": "5.10.104-linuxkit",
+        "name": "os.version"
+      },
+      {
+        "value": "ilog.rules.teamserver.model.IlrModelInfo$ServerEMFRegistry",
+        "name": "org.eclipse.emf.ecore.EPackage.Registry.INSTANCE"
+      },
+      {
+        "value": "",
+        "name": "java.awt.fonts"
+      },
+      {
+        "value": ":",
+        "name": "path.separator"
+      },
+      {
+        "value": "false",
+        "name": "org.apache.aries.blueprint.preemptiveShutdown"
+      },
+      {
+        "value": "2.9",
+        "name": "java.vm.version"
+      },
+      {
+        "value": "",
+        "name": "user.variant"
+      },
+      {
+        "value": "true",
+        "name": "wlp.user.dir.isDefault"
+      },
+      {
+        "value": "true",
+        "name": "ibm.cds.suppresserrors"
+      },
+      {
+        "value": "sun.print.PSPrinterJob",
+        "name": "java.awt.printerjob"
+      },
+      {
+        "value": "UnicodeLittle",
+        "name": "sun.io.unicode.encoding"
+      },
+      {
+        "value": "sun.awt.X11.XToolkit",
+        "name": "awt.toolkit"
+      },
+      {
+        "value": "false",
+        "name": "java.lang.stringBuffer.growAggressively"
+      },
+      {
+        "value": "true",
+        "name": "ibm.signalhandling.sigint"
+      },
+      {
+        "value": "1",
+        "name": "org.apache.cxf.stax.allowInsecureParser"
+      },
+      {
+        "value": "/home/default",
+        "name": "user.home"
+      },
+      {
+        "value": "little",
+        "name": "com.ibm.cpu.endian"
+      },
+      {
+        "value": "Oracle Corporation",
+        "name": "java.specification.vendor"
+      },
+      {
+        "value": "true",
+        "name": "ibm.signalhandling.sigchain"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/amd64/compressedrefs:/opt/ibm/java/jre/lib/amd64:/usr/lib64:/usr/lib",
+        "name": "java.library.path"
+      },
+      {
+        "value": "http://www.ibm.com",
+        "name": "java.vendor.url"
+      },
+      {
+        "value": "true",
+        "name": "spring.beaninfo.ignore"
+      },
+      {
+        "value": "IBM Corporation",
+        "name": "java.vm.vendor"
+      },
+      {
+        "value": "8.0.6.36 - pxa6480sr6fp36-20210824_02(SR6 FP36)\nJRE 1.8.0 Linux amd64-64-Bit Compressed References 20210824_12036 (JIT enabled, AOT enabled)\nOpenJ9   - 7bb9176\nOMR      - 820a5aa\nIBM      - dc8f23e",
+        "name": "java.fullversion"
+      },
+      {
+        "value": "Java(TM) SE Runtime Environment",
+        "name": "java.runtime.name"
+      },
+      {
+        "value": "false",
+        "name": "sun.net.http.retryPost"
+      },
+      {
+        "value": "/opt/ibm/wlp/bin/tools/ws-server.jar defaultServer",
+        "name": "sun.java.command"
+      },
+      {
+        "value": "/opt/ibm/wlp/bin/tools/ws-server.jar:/opt/ibm/wlp/bin/tools/ws-javaagent.jar:/opt/ibm/wlp/bin/tools/ws-javaagent.jar",
+        "name": "java.class.path"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/servers/defaultServer/",
+        "name": "server.config.dir"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/",
+        "name": "wlp.user.dir"
+      },
+      {
+        "value": "Java Virtual Machine Specification",
+        "name": "java.vm.specification.name"
+      },
+      {
+        "value": "33",
+        "name": "sun.java.launcher.pid"
+      },
+      {
+        "value": "1.8",
+        "name": "java.vm.specification.version"
+      },
+      {
+        "value": "little",
+        "name": "sun.cpu.endian"
+      },
+      {
+        "value": "true",
+        "name": "java.awt.headless"
+      },
+      {
+        "value": "/tmp",
+        "name": "java.io.tmpdir"
+      },
+      {
+        "value": "true",
+        "name": "zookeeper.jmx.log4j.disable"
+      },
+      {
+        "value": "UTF-8",
+        "name": "ibm.system.encoding"
+      },
+      {
+        "value": "/opt/ibm/wlp/usr/shared/config/",
+        "name": "shared.config.dir"
+      },
+      {
+        "value": "amd64",
+        "name": "os.arch"
+      },
+      {
+        "value": "sun.awt.X11GraphicsEnvironment",
+        "name": "java.awt.graphicsenv"
+      },
+      {
+        "value": "false",
+        "name": "ibm.signalhandling.rs"
+      },
+      {
+        "value": "/opt/ibm/java/jre/lib/ext",
+        "name": "java.ext.dirs"
+      },
+      {
+        "value": "/opt/ibm/wlp/output/defaultServer",
+        "name": "user.dir"
+      },
+      {
+        "value": "\n",
+        "name": "line.separator"
+      },
+      {
+        "value": "IBM J9 VM",
+        "name": "java.vm.name"
+      },
+      {
+        "value": "true",
+        "name": "com.ibm.oti.shared.enabled"
+      },
+      {
+        "value": "64",
+        "name": "com.ibm.vm.bitmode"
+      },
+      {
+        "value": "server",
+        "name": "wlp.process.type"
+      },
+      {
+        "value": "com.ibm.ws.kernel.boot.jmx.internal.PlatformMBeanServerBuilder",
+        "name": "javax.management.builder.initial"
+      },
+      {
+        "value": "UTF-8",
+        "name": "file.encoding"
+      },
+      {
+        "value": "true",
+        "name": "com.ibm.jsse2.overrideDefaultTLS"
+      },
+      {
+        "value": "1.8",
+        "name": "java.specification.version"
+      },
+      {
+        "value": "scar",
+        "name": "com.ibm.oti.configuration"
+      },
+      {
+        "value": "defaultServer",
+        "name": "wlp.server.name"
+      }
+    ]
+  },
+  "inetAddress": "b29744ba59f0/172.17.0.2",
+  "rulesFired": {
+    "ruleInformation": [
+      {
+        "name": "eligibility.minimum_credit_score",
+        "businessName": "eligibility.minimum credit score",
+        "properties": {
+          "property": [
+            {
+              "value": "minimum_credit_score",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "minimum credit score",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.minimum_credit_score",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.ActionRule:2:2",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      },
+      {
+        "name": "eligibility.minimum_income",
+        "businessName": "eligibility.minimum income",
+        "properties": {
+          "property": [
+            {
+              "value": "minimum_income",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "minimum income",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.minimum_income",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.ActionRule:1:1",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      },
+      {
+        "name": "eligibility.repayment_and_score_6",
+        "businessName": "eligibility.repayment and score 7",
+        "properties": {
+          "property": [
+            {
+              "value": "repayment_and_score",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "repayment and score",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.repayment_and_score",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.DecisionTable:3:3",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "eligibility.repayment and score",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "rulesNotFired": {
+    "ruleInformation": [
+      {
+        "name": "eligibility.repayment_and_score_0",
+        "businessName": "eligibility.repayment and score 1",
+        "properties": {
+          "property": [
+            {
+              "value": "repayment_and_score",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "repayment and score",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.repayment_and_score",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.DecisionTable:3:3",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "eligibility.repayment and score",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      },
+      {
+        "name": "validation.maximum_amount",
+        "businessName": "validation.maximum amount",
+        "properties": {
+          "property": [
+            {
+              "value": "maximum_amount",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "maximum amount",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "validation",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "validation.maximum_amount",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.ActionRule:4:4",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "validation",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      },
+      {
+        "name": "eligibility.repayment_and_score_2",
+        "businessName": "eligibility.repayment and score 3",
+        "properties": {
+          "property": [
+            {
+              "value": "repayment_and_score",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "repayment and score",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.repayment_and_score",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.DecisionTable:3:3",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "eligibility.repayment and score",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      },
+      {
+        "name": "eligibility.repayment_and_score_4",
+        "businessName": "eligibility.repayment and score 5",
+        "properties": {
+          "property": [
+            {
+              "value": "repayment_and_score",
+              "name": "ruleExecutionShortName"
+            },
+            {
+              "value": "repayment and score",
+              "name": "ilog.rules.business_name"
+            },
+            {
+              "value": "eligibility",
+              "name": "ilog.rules.package_name"
+            },
+            {
+              "value": "eligibility.repayment_and_score",
+              "name": "ruleExecutionName"
+            },
+            {
+              "value": "brm.DecisionTable:3:3",
+              "name": "ilog.rules.teamserver.elementID"
+            },
+            {
+              "value": "eligibility.repayment and score",
+              "name": "ilog.rules.dt"
+            },
+            {
+              "value": "eligibility",
+              "name": "packageExecutionName"
+            },
+            {
+              "value": "new",
+              "name": "status"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "totalTasksNotExecuted": 0,
+  "outputParameters": {
+    "loan": {
+      "amount": 3,
+      "duration": 3,
+      "yearlyInterestRate": 10517320,
+      "yearlyRepayment": 3,
+      "approved": false,
+      "messages": [
+        "string",
+        "Too big Debt-To-Income ratio",
+        "Credit score below 200",
+        "debt-to-income too high compared to credit score"
+      ]
+    }
+  },
+  "workingMemory": {
+    "object": null
+  },
+  "executionEvents": {
+    "taskEvent": [
+      {
+        "startDate": "2022-06-24T09:13:21.301+0000",
+        "taskInformation": {
+          "name": "miniloan",
+          "businessName": "miniloan",
+          "properties": {}
+        },
+        "executionEvents": {
+          "taskEvent": [
+            {
+              "startDate": "2022-06-24T09:13:21.312+0000",
+              "taskInformation": {
+                "name": "miniloan#validation",
+                "businessName": "miniloan>validation",
+                "properties": {}
+              },
+              "executionEvents": {},
+              "endDate": "2022-06-24T09:13:21.313+0000"
+            },
+            {
+              "startDate": "2022-06-24T09:13:21.335+0000",
+              "taskInformation": {
+                "name": "miniloan#eligibility",
+                "businessName": "miniloan>eligibility",
+                "properties": {}
+              },
+              "executionEvents": {
+                "ruleEvent": [
+                  {
+                    "startDate": "2022-06-24T09:13:21.345+0000",
+                    "priority": 0,
+                    "ruleInformation": {
+                      "name": "eligibility.minimum_income",
+                      "businessName": "eligibility.minimum income",
+                      "properties": {
+                        "property": [
+                          {
+                            "value": "minimum_income",
+                            "name": "ruleExecutionShortName"
+                          },
+                          {
+                            "value": "minimum income",
+                            "name": "ilog.rules.business_name"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "ilog.rules.package_name"
+                          },
+                          {
+                            "value": "eligibility.minimum_income",
+                            "name": "ruleExecutionName"
+                          },
+                          {
+                            "value": "brm.ActionRule:1:1",
+                            "name": "ilog.rules.teamserver.elementID"
+                          },
+                          {
+                            "value": "",
+                            "name": "ilog.rules.dt"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "packageExecutionName"
+                          },
+                          {
+                            "value": "new",
+                            "name": "status"
+                          }
+                        ]
+                      }
+                    },
+                    "boundObjects": {
+                      "object": [
+                        {
+                          "content": ["miniloan.Borrower@71062af6"],
+                          "serializer": "ClassName"
+                        },
+                        {
+                          "content": ["miniloan.Loan@5493ee0b"],
+                          "serializer": "ClassName"
+                        }
+                      ]
+                    },
+                    "endDate": "2022-06-24T09:13:21.346+0000"
+                  },
+                  {
+                    "startDate": "2022-06-24T09:13:21.346+0000",
+                    "priority": 0,
+                    "ruleInformation": {
+                      "name": "eligibility.minimum_credit_score",
+                      "businessName": "eligibility.minimum credit score",
+                      "properties": {
+                        "property": [
+                          {
+                            "value": "minimum_credit_score",
+                            "name": "ruleExecutionShortName"
+                          },
+                          {
+                            "value": "minimum credit score",
+                            "name": "ilog.rules.business_name"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "ilog.rules.package_name"
+                          },
+                          {
+                            "value": "eligibility.minimum_credit_score",
+                            "name": "ruleExecutionName"
+                          },
+                          {
+                            "value": "brm.ActionRule:2:2",
+                            "name": "ilog.rules.teamserver.elementID"
+                          },
+                          {
+                            "value": "",
+                            "name": "ilog.rules.dt"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "packageExecutionName"
+                          },
+                          {
+                            "value": "new",
+                            "name": "status"
+                          }
+                        ]
+                      }
+                    },
+                    "boundObjects": {
+                      "object": [
+                        {
+                          "content": ["miniloan.Borrower@71062af6"],
+                          "serializer": "ClassName"
+                        }
+                      ]
+                    },
+                    "endDate": "2022-06-24T09:13:21.346+0000"
+                  },
+                  {
+                    "startDate": "2022-06-24T09:13:21.346+0000",
+                    "priority": 0,
+                    "ruleInformation": {
+                      "name": "eligibility.repayment_and_score_6",
+                      "businessName": "eligibility.repayment and score 7",
+                      "properties": {
+                        "property": [
+                          {
+                            "value": "repayment_and_score",
+                            "name": "ruleExecutionShortName"
+                          },
+                          {
+                            "value": "repayment and score",
+                            "name": "ilog.rules.business_name"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "ilog.rules.package_name"
+                          },
+                          {
+                            "value": "eligibility.repayment_and_score",
+                            "name": "ruleExecutionName"
+                          },
+                          {
+                            "value": "brm.DecisionTable:3:3",
+                            "name": "ilog.rules.teamserver.elementID"
+                          },
+                          {
+                            "value": "eligibility.repayment and score",
+                            "name": "ilog.rules.dt"
+                          },
+                          {
+                            "value": "eligibility",
+                            "name": "packageExecutionName"
+                          },
+                          {
+                            "value": "new",
+                            "name": "status"
+                          }
+                        ]
+                      }
+                    },
+                    "boundObjects": {
+                      "object": [
+                        {
+                          "content": ["miniloan.Borrower@71062af6"],
+                          "serializer": "ClassName"
+                        }
+                      ]
+                    },
+                    "endDate": "2022-06-24T09:13:21.346+0000"
+                  }
+                ]
+              },
+              "endDate": "2022-06-24T09:13:21.347+0000"
+            }
+          ]
+        },
+        "endDate": "2022-06-24T09:13:21.348+0000"
+      }
+    ]
+  }
+}

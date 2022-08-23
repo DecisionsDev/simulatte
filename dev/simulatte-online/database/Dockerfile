@@ -1,0 +1,4 @@
+FROM postgres
+ENV POSTGRES_USER simulatte
+ENV POSTGRES_PASSWORD simulatte
+ENV POSTGRES_DB simulatte

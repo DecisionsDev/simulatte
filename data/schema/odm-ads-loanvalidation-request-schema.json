@@ -1,0 +1,36 @@
+{
+  "ODM": {
+    "borrower": {
+      "name": "John Doe",
+      "creditScore": 730,
+      "yearlyIncome": 315000
+    },
+    "loan": {
+      "amount": 300000,
+      "duration": 240,
+      "yearlyInterestRate": 0.03,
+      "yearlyRepayment": 10000
+    }
+  },
+  "ADS": {
+    "loan": {
+      "amount": 185000,
+      "numberOfMonthlyPayments": 120,
+      "startDate": "2005-06-01T00:00:00Z",
+      "loanToValue": 0.7
+    },
+    "borrower": {
+      "SSN": {
+        "areaNumber": "123",
+        "groupCode": "45",
+        "serialNumber": "6789"
+      },
+      "firstName": "John",
+      "lastName": "Doe",
+      "birthDate": "1968-05-12T00:00:00Z",
+      "yearlyIncome": 100000,
+      "zipCode": "91320",
+      "creditScore": 500
+    }
+  }
+}

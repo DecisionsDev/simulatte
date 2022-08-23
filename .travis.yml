@@ -1,0 +1,16 @@
+language: java
+jdk: oraclejdk8
+  
+env:
+  global:
+  - secure: (ENV_VARS_HERE)
+  
+addons:
+  sonarcloud:
+    organization: "montanamendy-from-travis"
+    token:
+      secure: $SONAR_TOKEN
+  
+script:
+- ./mvnw clean install -B
+- ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar

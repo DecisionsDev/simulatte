@@ -1,0 +1,11 @@
+*.jar
+#**/*.jar
+#dev/**/*.jar
+docs/simulatte_project.pptx
+data/simulatte-db/data/**
+dashboards/**
+draft/**
+gitpush.sh
+data/ADS/fraudDetection/**
+dev/simulatte-offline/decision-on-spark/**
+.DS_Store
