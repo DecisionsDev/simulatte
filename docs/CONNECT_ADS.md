@@ -1,6 +1,5 @@
-# Connect Simulatte to your decision service
+# Connect Simulatte to IBM Automation Decision Service (ADS)
 
-## IBM Automation Decision Service (ADS)
 Access your ADS installation or ask for an evaluation at this url ToDo
 How to access samples (v1 and v2) projects - ToDo
 
@@ -35,7 +34,3 @@ Requirements to download the decision archives :
 deploymentSpaceId
 decisionId
 To retrieve the decision archive, copy and paste this link in your web browser : https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/runtime/api/swagger-ui/#/Decision%20storage%20management/getArchive
-
-### IBM Operational Decision Manager (ODM)
-
-Get ODM on Docker Access to sample projects?
