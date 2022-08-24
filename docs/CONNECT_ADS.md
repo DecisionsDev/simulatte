@@ -6,6 +6,7 @@ How to access samples (v1 and v2) projects - ToDo
 
 ### Configure ADS remote invocation
 * How to get the endpoint of your deployed decision service?
+   * Relative path example: _xxx/pf2/loan_approval/loanApprovalDecisionService/1.4.0/loanApprovalDecisionService-1.4.0.jar 
 * How to manage security?
    * BasicAuth
    * Zen Token
