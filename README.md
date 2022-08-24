@@ -54,6 +54,22 @@ Get an ADS account
 sample project?
 
 ### Über jar files
+
+##### Java API ADS 
+
+An application using the ADS execution Java API must add in the classpath:
+
+- execution-api.jar
+- engine-de.jar
+- jackson-databind version 2.13.2.2 and its dependencies
+- jackson-datatype-jsr310 version 2.13.2
+
+To retrieve the `execution-api.jar` and `engine-de.jar` files: [retrieve jar](https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/download/)
+
+
+
+
+##### ADS decision service archive
 Requirements to download the decision archives :
 - deploymentSpaceId 
 - decisionId
