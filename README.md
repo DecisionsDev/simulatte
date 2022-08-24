@@ -48,6 +48,7 @@ cd simulatte
 export BASE_DIR=$PWD
 ```
 ### Configure Decision Service invocation
+Connect your SimuLatte instance with ADS or ODM:
    * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
    * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
 
