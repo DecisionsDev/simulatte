@@ -57,6 +57,8 @@ sample project?
 
 ##### Java API ADS 
 
+Doncumentation on [Java API ADS](https://github.ibm.com/dba/ads-execution-api)
+
 An application using the ADS execution Java API must add in the classpath:
 
 - execution-api.jar
@@ -64,7 +66,7 @@ An application using the ADS execution Java API must add in the classpath:
 - jackson-databind version 2.13.2.2 and its dependencies
 - jackson-datatype-jsr310 version 2.13.2
 
-To retrieve the `execution-api.jar` and `engine-de.jar` files: [retrieve jar](https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/download/)
+To retrieve the `execution-api.jar` and `engine-de.jar` files: [jar](https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/download/)
 
 
 
