@@ -47,8 +47,9 @@ Move to the project directory.
 cd simulatte
 export BASE_DIR=$PWD
 ```
-### Configure for ADS or ODM
-[Configure](docs/CONNECTDECISIONSERVICE.md "Configure")
+### Configure Decision Service invocation
+   * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
+   * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
 
 ### Build
 Build the librairies and Docker images for the microservices.
