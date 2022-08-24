@@ -1,13 +1,16 @@
 # Connect Simulatte to your decision service
 
 ## IBM Automation Decision Service (ADS)
-Access your ADS installation or ask for an evaluation at TODO
-an ADS account sample project?
+Access your ADS installation or ask for an evaluation at this url ToDo
+How to access samples (v1 and v2) projects - ToDo
 
-### For remote invocation how to access to a decision service deployed in ADS
+### Configure remote invocation
+How to get the endpoint of your deployed decision service?
+How to manage security?
+How to test?
 
-### For embedded invocation how to access to ADS jars
-#### Generic execution jars
+### Configure embedded invocation
+#### Retrieve ADS execution jars
 You need to get the following jars to embedd an ADS decision service execution in Simulatte:
    * execution-api.jar
    * engine-de.jar
