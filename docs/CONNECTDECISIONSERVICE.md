@@ -1,5 +1,6 @@
-Connect to ADS or ODM
-ADS
+## Connect Simulatte to your decision service
+
+### ADS or 
 Get an ADS account sample project?
 
 Über jar files
@@ -21,5 +22,6 @@ deploymentSpaceId
 decisionId
 To retrieve the decision archive, copy and paste this link in your web browser : https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/runtime/api/swagger-ui/#/Decision%20storage%20management/getArchive
 
-ODM
+### ODM
+
 Get ODM on Docker Access to sample projects?
