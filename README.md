@@ -9,7 +9,7 @@ Simulatte combines:
 You can use Simulatte in an online mode through REST calls on microservices. Additionaly you can submit the decision invoker in a Spark batch to run in an Hadoop Spark cluster for maximum performances.
 
 ## Motivations
-   * Trust your decision automation on large datasets potentialy coming from your production warehouse.
+   * Trust your decision automation on large datasets coming from your production warehouse or synthetic.
    * How to execute a large dataset (millions to billions) of automated decisions based on business rules and machine learning.
    * How to apply analytics on these large decision sets to get business insights by computing KPIs and visualizing the results.
    * How can we navigate with ease in a decision set to search for specific decisions?
