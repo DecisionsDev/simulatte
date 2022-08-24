@@ -5,9 +5,9 @@ Access your ADS installation or ask for an evaluation at this url ToDo
 How to access samples (v1 and v2) projects - ToDo
 
 ### Configure ADS remote invocation
-How to get the endpoint of your deployed decision service?
-How to manage security?
-How to test?
+* How to get the endpoint of your deployed decision service?
+* How to manage security?
+* How to test?
 
 No ADS jars needed in this case. Invocations go over REST HTTPS calls on the secure endoint.
 No need of a Decision Service archive download in this case.
