@@ -44,12 +44,13 @@ import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 
 @Service
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Slf4j
 public class DecisionServiceInvoker implements Serializable {
 
     public static boolean INTERRUPT = false; //Test for PAUSE/CONTINUE
 
+    public String invokerMode = "online";
     @Autowired
     private transient WebClient webClient;
 
@@ -245,12 +246,12 @@ public class DecisionServiceInvoker implements Serializable {
 
         // Read data in file system
         JSONArray requestsList = run.getExecutor().getType()==JSE
-                ? new JSONArray(javaSparkContext.textFile(dataSourceService
+                ? serializeToJSONArray(dataSourceService
                     .getByUid(run.getDataSourceUid())
-                    .getUri()).collect())
-                : serializeToJSONArray(dataSourceService
+                    .getUri())
+                : new JSONArray(javaSparkContext.textFile(dataSourceService
                     .getByUid(run.getDataSourceUid())
-                    .getUri()); //convert to json array;
+                    .getUri()).collect()); //convert to json array
         run.setRequestList(requestsList); //set request list for execution
 
         //Set run report
