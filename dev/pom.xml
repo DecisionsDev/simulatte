@@ -17,11 +17,40 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <modules>
+        <module>simulatte-core-deps</module>
         <module>simulatte-core</module>
-        <module>simulatte-online</module>
-        <module>simulatte-offline</module>
     </modules>
+
+    <profiles>
+        <!-- Allow to run the online profile. mvn clean install -Ponline -->
+        <profile>
+           <id>online</id>
+           <modules>
+                <module>simulatte-online</module>
+            </modules>
+        </profile>
+
+        <!-- Allow to run the offline profile. mvn clean install -Poffline -->
+        <profile>
+            <id>offline</id>
+            <modules>
+                 <module>simulatte-offline</module>
+             </modules>
+         </profile>
+        <!-- By default compile and run test for online and offline -->
+        <profile>
+           <id>default</id>
+           <activation>
+              <activeByDefault>true</activeByDefault>
+           </activation>
+           <modules>
+                <module>simulatte-online</module>
+                <module>simulatte-offline</module>
+        </modules>
+        </profile>
+     </profiles>
     <dependencies>
         <!-- SPRING BOOT STARTER -->
         <dependency>
