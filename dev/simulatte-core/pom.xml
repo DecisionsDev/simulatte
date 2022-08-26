@@ -19,22 +19,11 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
-        <!-- ADS LOCAL -->
         <dependency>
-            <groupId>com.ibm.decision</groupId>
-            <artifactId>execution-api</artifactId>
-            <version>1.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/execution-api_1.0.2.jar</systemPath>
+            <groupId>com.ibm</groupId>
+            <artifactId>simulatte-core-deps</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.ibm.decision</groupId>
-            <artifactId>engine-de-api</artifactId>
-            <version>2.14.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/engine-de-api_2.14.0.jar</systemPath>
-        </dependency>
-        <!-- end ADS LOCAL -->
     </dependencies>
 
  
