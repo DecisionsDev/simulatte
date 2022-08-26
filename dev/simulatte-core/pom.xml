@@ -25,18 +25,15 @@
             <artifactId>execution-api</artifactId>
             <version>1.0.1</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/execution-api_1.0.2.jar</systemPath>
+            <systemPath>${ADS_JAVA_LIB}/execution-api_1.0.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.ibm.decision</groupId>
             <artifactId>engine-de-api</artifactId>
             <version>2.14.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/engine-de-api_2.14.0.jar</systemPath>
+            <systemPath>${ADS_JAVA_LIB}/engine-de-api_2.14.0.jar</systemPath>
         </dependency>
         <!-- end ADS LOCAL -->
     </dependencies>
-
- 
-
 </project>

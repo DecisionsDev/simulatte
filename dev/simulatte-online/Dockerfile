@@ -12,8 +12,8 @@ COPY ./src ${WORKDIR}/src
 RUN cd ${WORKDIR} && mvn clean install -Dmaven.test.skip=true | grep -v 'Download.*'
 RUN ls -la /build/target/
 
-FROM openjdk:8-jdk-alpine
+#FROM openjdk:8-jdk-alpine
 
-COPY --from=builder /build/target/simulatte-0.0.1-SNAPSHOT.jar /workdir/simulation-service.jar
+#COPY --from=builder /build/target/simulatte-online-0.0.1-SNAPSHOT.jar /workdir/simulation-service.jar
 
-CMD ["/usr/bin/java", "-Xms1024M", "-Xmx4096M", "-jar", "/workdir/simulation-service.jar"]
+#CMD ["/usr/bin/java", "-Xms1024M", "-Xmx4096M", "-jar", "/workdir/simulation-service.jar"]

@@ -34,7 +34,6 @@ public class DecisionService implements Serializable {
     @NonNull
     private AuthType authType;
 
-    @NonNull
     private String operationName;
 
     //BASIC AUTH

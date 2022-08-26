@@ -1,5 +1,6 @@
 package com.ibm.simulatte.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ibm.simulatte.core.datamodels.analytic.KPI;
 import com.ibm.simulatte.core.datamodels.analytic.Metric;
 import com.ibm.simulatte.core.datamodels.data.DataSink;
@@ -27,6 +28,9 @@ public class SimulationDTO {
 
     @JsonProperty("createDate")
     private Date createDate ;
+
+    @JsonProperty("lastUpdateDate")
+    private Date lastUpdateDate;
 
     @JsonProperty("trace")
     private Boolean trace;

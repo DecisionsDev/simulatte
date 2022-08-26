@@ -1,6 +1,7 @@
 package com.ibm.simulatte.core.datamodels.run;
 
 import com.ibm.simulatte.core.datamodels.data.DataSink;
+import com.ibm.simulatte.core.datamodels.data.DataSource;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
 import com.ibm.simulatte.core.datamodels.executor.Executor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,11 +42,14 @@ public class Run implements Serializable {
     private Date createDate;
 
     @NonNull
-    private Boolean trace; //Optional (if user want to change)
+    private Boolean trace; //Optional (if user want to change it)
 
     @NonNull
     @JsonIgnore
     private int dataSourceUid ;
+
+    @Transient
+    private DataSource dataSource;
 
     @NonNull
     @OneToOne(cascade = CascadeType.ALL)

@@ -3,7 +3,7 @@ services:
   simulation-service:
     image: simulatte/simulation-service:latest
     build:
-      context: dev/simulatte-online/
+      context: dev/
     volumes:
       - $PWD:/home/jovyan/work
       - $HOME/.m2:/root/.m2 # Mount your local Maven repository into build container to prevent repeated downloads
@@ -46,7 +46,7 @@ services:
     image: simulatte/notebooks
     build:
       context: notebooks/
-    container_name: simulatte/notebooks
+    container_name: notebooks
     restart: on-failure
     ports:
       - "8888:8888"
@@ -115,9 +115,9 @@ services:
 
   grafana:
     image: grafana/grafana
-    pull_policy: always
+    #pull_policy: always
     container_name: grafana
-    restart: unless-stopped
+    #restart: unless-stopped
     links:
       - prometheus:prometheus
     volumes:  
@@ -129,7 +129,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SERVER_DOMAIN=localhost
     ports:
-      - "3000:3000"
+      - "3001:3000"
 
 
 #  alertmanager:
