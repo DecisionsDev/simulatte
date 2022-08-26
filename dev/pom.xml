@@ -29,7 +29,7 @@
            <id>online</id>
            <modules>
                 <module>simulatte-online</module>
-            </modules>
+           </modules>
         </profile>
 
         <!-- Allow to run the offline profile. mvn clean install -Poffline -->
@@ -39,6 +39,7 @@
                  <module>simulatte-offline</module>
              </modules>
          </profile>
+
         <!-- By default compile and run test for online and offline -->
         <profile>
            <id>default</id>
@@ -48,9 +49,10 @@
            <modules>
                 <module>simulatte-online</module>
                 <module>simulatte-offline</module>
-        </modules>
+           </modules>
         </profile>
-     </profiles>
+    </profiles>
+
     <dependencies>
         <!-- SPRING BOOT STARTER -->
         <dependency>
