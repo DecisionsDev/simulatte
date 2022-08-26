@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ibm</groupId>
+        <artifactId>simulatte</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.ibm</groupId>
+    <artifactId>simulatte-core-deps</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>simulatte-core-deps</name>
+    <description>simulatte-core-deps</description>
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+<build>
+<plugins>
+    <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+            <execution>
+                <phase>generate-resources</phase>
+                <configuration>
+                    <target>
+                        <unzip  dest="${project.basedir}/target/classes">
+                            <fileset dir="${basedir}/../libs" >
+                                <include name="**/*.jar"/>
+                            </fileset>
+                        </unzip>
+                    </target>
+                </configuration>
+                <goals>
+                    <goal>run</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+    
+    <!--  plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <inherited>false</inherited>
+        <executions>
+            <execution>
+                <id>distrib</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/distrib.xml</descriptor>
+                    </descriptors>
+                    <workDirectory>target/assembly/work</workDirectory>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin -->
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.2</version>
+       
+      </plugin>
+</plugins>
+
+</build>
+</project>
