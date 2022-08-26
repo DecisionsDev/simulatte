@@ -6,7 +6,7 @@ data/simulatte-db/data/**
 dashboards/**
 draft/**
 gitpush.sh
-dev/Dockerfile-test
+.vscode
 data/ADS/fraudDetection/**
 dev/simulatte-offline/decision-on-spark/**
 .DS_Store

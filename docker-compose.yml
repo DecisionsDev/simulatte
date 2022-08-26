@@ -51,9 +51,9 @@ services:
     ports:
       - "8888:8888"
     environment:
-      - BASE_DIR=/home/jovyan/work
-      - SIMULATION_SERVER_HOSTNAME=simulation-service
-      - ANALYTIC_SERVER_HOSTNAME=analytic-service
+      - SIMULATTE_BASE_DIR=/home/jovyan/work
+      - SIMULATTE_ONLINE_HOSTNAME=simulation-service
+      - SIMULATTE_ANALYTIC_HOSTNAME=analytic-service
     volumes:
       - $PWD:/home/jovyan/work
 
@@ -115,9 +115,9 @@ services:
 
   grafana:
     image: grafana/grafana
-    #pull_policy: always
+    pull_policy: always
     container_name: grafana
-    #restart: unless-stopped
+    restart: unless-stopped
     links:
       - prometheus:prometheus
     volumes:  
@@ -129,7 +129,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SERVER_DOMAIN=localhost
     ports:
-      - "3001:3000"
+      - "3000:3000"
 
 
 #  alertmanager:

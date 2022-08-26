@@ -39,14 +39,50 @@ The simulatte project is composed of the following building blocks:
 
 ## How to use the project
 
-### Setup
-Clone the repo.
-Move to the project directory.
+### Setup for docker use
+Clone the repository:
+- Using http protocol
+```bash
+git clone https://github.com/DecisionsDev/simulatte.git
+```
+or 
+- Using ssh protocol
+```bash
+git clone git@github.com:DecisionsDev/simulatte.git
+```
 
+Move to the project directory.
 ```bash
 cd simulatte
-export BASE_DIR=$PWD
 ```
+Be sure these ports are already not used :
+- port **3000** for grafana
+- port **8080** for simulatte online
+- port **8888** for jupiter notebooks
+- port **4040** for spark jobs monitoring
+- port **9060** only for ODM image use
+- port **9443** only for ODM image use
+- port **5432** for database
+- port **9090** for prometheus
+
+Run docker compose commands 
+```bash
+docker compose build 
+docker compose up -d
+```
+
+To use simulatte notebooks, run the command below and click on the `http://127.0.0.1:8888` link printed in your console.
+```bash
+docker logs notebooks
+```
+
+The notebooks are in this directory on jupiter labs : `work/notebooks`
+
+To stop all simulatte containers : 
+```bash
+docker compose stop
+```
+
 ### Configure Decision Service invocation
 Connect your SimuLatte instance with ADS or ODM:
    * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")

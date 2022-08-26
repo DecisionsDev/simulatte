@@ -17,7 +17,7 @@ COPY simulatte-offline/ simulatte-offline/
 COPY simulatte-online/ simulatte-online/
 
 COPY pom.xml .
-RUN mvn clean install -DADS_JAVA_LIB=$PWD/libs -DskipTests=true | grep -v 'Download.*'
+RUN mvn clean install -DADS_JAVA_LIB=$PWD/libs -DskipTests=true -Ponline | grep -v 'Download.*'
 
 
 
