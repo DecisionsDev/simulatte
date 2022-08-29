@@ -31,7 +31,7 @@
                         <configuration>
                             <target>
                                 <unzip dest="${project.basedir}/target/classes">
-                                    <fileset dir="${basedir}/../libs" >
+                                    <fileset dir="${basedir}/../../libs" >
                                         <include name="**/*.jar"/>
                                     </fileset>
                                 </unzip>

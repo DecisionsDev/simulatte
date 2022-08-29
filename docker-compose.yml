@@ -3,7 +3,8 @@ services:
   simulation-service:
     image: simulatte/simulation-service:latest
     build:
-      context: dev/
+      context: ./
+      dockerfile: ./dev/Dockerfile
     volumes:
       - $PWD/data/ADS:/home/jovyan/work/data/ADS
       - $PWD/data/ODM:/home/jovyan/work/data/ODM
