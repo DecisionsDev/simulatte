@@ -26,11 +26,11 @@ The simulation frameworks delivers a matrix of modes on the following dimensions
 
 ### Setup for docker use
 Clone the repository:
-- Using http protocol
+By using http protocol
 ```bash
 git clone https://github.com/DecisionsDev/simulatte.git
 ```
-- Using ssh protocol
+or ssh protocol
 ```bash
 git clone git@github.com:DecisionsDev/simulatte.git
 ```
@@ -88,8 +88,6 @@ To stop all simulatte containers :
 ```bash
 docker compose stop
 ```
-
-
 
 ### Troubleshooting
 * Build
