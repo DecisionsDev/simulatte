@@ -85,14 +85,16 @@ Docker-compose up
 Main service is accessible at the url ...
 ```
 ### Troubleshooting
-You can encounter a space limit when building the images with the message like:
-```bash
-ERROR: Could not install packages due to an OSError: [Errno 28] No space left on device: '/tmp/pip-uninstall-t79kgz4i'
-```
-Resolution: Clean up the temporary folders and unnecessary resources in your Docker installation by running:
-```bash
-docker system prune    
-```
+* Build
+   * No space left on device
+    You can encounter a space limit when building the images with the message like:
+    ```bash
+    ERROR: Could not install packages due to an OSError: [Errno 28] No space left on device: '/tmp/pip-uninstall-t79kgz4i'
+    ```
+    Resolution: Clean up the temporary folders and unnecessary resources in your Docker installation by running:
+    ```bash
+    docker system prune    
+    ```
 
 ## Structure
 The simulatte project is composed of the following building blocks:
