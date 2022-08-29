@@ -50,6 +50,12 @@ Be sure these ports are already not used :
 - port **5432** for database
 - port **9090** for prometheus
 
+### Configure Decision Service invocation
+Connect your SimuLatte instance with ADS or ODM:
+   * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
+   * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
+   
+### Run
 Run docker compose commands 
 ```bash
 docker compose build 
@@ -78,27 +84,14 @@ You see the Jupyter web page.
 
 On the left side navigate into the `work/notebooks` hierarchy.
 
+### Stop
 To stop all simulatte containers : 
 ```bash
 docker compose stop
 ```
 
-### Configure Decision Service invocation
-Connect your SimuLatte instance with ADS or ODM:
-   * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
-   * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
 
-### Build
-Build the librairies and Docker images for the microservices.
-```bash
-mvn clean install
-```
-### Run
-Start the set of microservices with Docker compose.
-```bash
-Docker-compose up
-Main service is accessible at the url ...
-```
+
 ### Troubleshooting
 * Build
    * No space left on device
