@@ -1,0 +1,17 @@
+{
+	"ulid": "01GBM14G19TSH2T3JN9MYS16PT",
+	"minTime": 1661739684543,
+	"maxTime": 1661745600000,
+	"stats": {
+		"numSamples": 1701,
+		"numSeries": 424,
+		"numChunks": 424
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GBM14G19TSH2T3JN9MYS16PT"
+		]
+	},
+	"version": 1
+}
