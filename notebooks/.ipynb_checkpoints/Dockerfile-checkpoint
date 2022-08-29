@@ -1,3 +1,0 @@
-FROM jupyter/pyspark-notebook
-#ENV APP_HOME /notebook
-#WORKDIR ${APP_HOME}

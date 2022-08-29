@@ -1,0 +1,17 @@
+{
+	"ulid": "01GBMFA02QSWX880HQVECTDNTE",
+	"minTime": 1661754944739,
+	"maxTime": 1661760000000,
+	"stats": {
+		"numSamples": 13005,
+		"numSeries": 424,
+		"numChunks": 424
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GBMFA02QSWX880HQVECTDNTE"
+		]
+	},
+	"version": 1
+}
