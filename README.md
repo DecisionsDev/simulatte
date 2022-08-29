@@ -39,7 +39,9 @@ Move to the project directory.
 ```bash
 cd simulatte
 ```
-Be sure these ports are already not used :
+### Pre requisites
+Docker installed
+Be aware that Simulatte will use the following ports :
 - port **3000** for grafana
 - port **8080** for simulatte online
 - port **8888** for jupiter notebooks
