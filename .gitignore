@@ -4,6 +4,7 @@ gitpush.sh
 
 .vscode
 .DS_Store
+.travis.yml
 
 
 dashboards/**
