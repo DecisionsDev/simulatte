@@ -81,7 +81,7 @@ docker logs notebooks
 ```
 Click on the `http://127.0.0.1:8888` link printed in your console.
 You see the Jupyter web page.
-![Jupyter notebooks](docs/images/simulatte.jupyter.page1.png "Entering in the notebook server")
+![Jupyter notebooks](docs/images/simulatte.notebooks.server.page1.png "Entering in the notebook server")
 
 On the left side navigate into the `work/notebooks` hierarchy.
 
