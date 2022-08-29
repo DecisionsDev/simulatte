@@ -1,13 +1,6 @@
 # SimuLatte
 This projects aims to build confidence in your decision automation through simulations.
 
-Simulatte combines:
-   * a Spark based execution invoker to read a JSON request dataset and automate at scale the business decisions, and write them with their traces,
-   * an analytics post-processing for computing metrics, KPIs and visualizations through Python and Jupyter notebooks.
-   * a decision automation delegated to IBM Automation Decision Services(ADS) or IBM Operational Decision Services(ODM), 2 capabilities of the Cloud Pak for Business Automation. These 2 capabilities run an inference rule engine and ADS allows to call any ML model to bring probabilities in the decision making.
-
-You can use Simulatte in an online mode through REST calls on microservices. Additionaly you can submit the decision invoker in a Spark batch to run in an Hadoop Spark cluster for maximum performances.
-
 ## Motivations
    * Trust your decision automation on large datasets coming from your production warehouse or synthetic.
    * How to execute a large dataset (millions to billions) of automated decisions based on business rules and machine learning.
@@ -15,6 +8,13 @@ You can use Simulatte in an online mode through REST calls on microservices. Add
    * How can we navigate with ease in a decision set to search for specific decisions?
    * How to compose analytical dashboards for tour decision automation?
    * How to empower champion/challenger comparisions for automated decision services?
+   
+Simulatte combines:
+   * a Spark based execution invoker to read a JSON request dataset and automate at scale the business decisions, and write them with their traces,
+   * an analytics post-processing for computing metrics, KPIs and visualizations through Python and Jupyter notebooks.
+   * a decision automation delegated to IBM Automation Decision Services(ADS) or IBM Operational Decision Services(ODM), 2 capabilities of the Cloud Pak for Business Automation. These 2 capabilities run an inference rule engine and ADS allows to call any ML model to bring probabilities in the decision making.
+
+You can use Simulatte in an online mode through REST calls on microservices. Additionaly you can submit the decision invoker in a Spark batch to run in an Hadoop Spark cluster for maximum performances.
 
 ## Flavors
 The simulation frameworks delivers a matrix of modes on the following dimensions:
