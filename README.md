@@ -56,6 +56,18 @@ docker compose build
 docker compose up -d
 ```
 
+At the end you should see all containers (ODM exluded in this case) running as follows:
+```bash
+[+] Running 7/7
+ ⠿ Network simulatte_default     Created                                                                                                                 
+ ⠿ Container notebooks           Started                                                                                                                 
+ ⠿ Container simulatte-db        Healthy                                                                                                                 
+ ⠿ Container prometheus          Started                                                                                                                 
+ ⠿ Container grafana             Started                                                                                                                 
+ ⠿ Container simulation-service  Started                                                                                                                 
+ ⠿ Container analytic-service    Started
+ ```
+ 
 To use simulatte notebooks, run the command below and click on the `http://127.0.0.1:8888` link printed in your console.
 ```bash
 docker logs notebooks
