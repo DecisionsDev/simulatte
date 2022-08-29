@@ -16,26 +16,11 @@ You can use Simulatte in an online mode through REST calls on microservices. Add
    * How to compose analytical dashboards for tour decision automation?
    * How to empower champion/challenger comparisions for automated decision services?
 
-## Gallery
-Examples of simulation outcomes produced with SimuLatte:
-   * Loan approval donuts - screenshot
-   * Scatters for loan applications - screenshot
-   * Sandkey for rule coverage  - screenshot
-   * etc
-
 ## Flavors
 The simulation frameworks delivers a matrix of modes on the following dimensions:
    * online vs offline execution
    * remote REST vs embedded Java calls for the decision invocation,
    * basic Java single process single threaded, or Spark local, Spark cluster for full power,
-   
-## Structure
-The simulatte project is composed of the following building blocks:
-   * [core](docs/core.md): a core library. It contains all common material to run simulations in online and offline. It covers the default decision service invokers for ADS and ODM.
-   * [online](docs/online.md): online. This part comes as Docker microservices to execute decisions through a Java based container, and perform analytic post processing to produce a simulation report.
-   * [offline](docs/offline.md): offline. This part gives a generic batch simulation runner capable to run standalone but on Hadoop Spark cluster too for maximum of scalability and performance with data residing in the lake. 
-
-![Structure](docs/images/simulatte.project.structure.png "structure of the project")
 
 ## How to use the project
 
@@ -99,6 +84,14 @@ Start the set of microservices with Docker compose.
 Docker-compose up
 Main service is accessible at the url ...
 ```
+
+## Structure
+The simulatte project is composed of the following building blocks:
+   * [core](docs/core.md): a core library. It contains all common material to run simulations in online and offline. It covers the default decision service invokers for ADS and ODM.
+   * [online](docs/online.md): online. This part comes as Docker microservices to execute decisions through a Java based container, and perform analytic post processing to produce a simulation report.
+   * [offline](docs/offline.md): offline. This part gives a generic batch simulation runner capable to run standalone but on Hadoop Spark cluster too for maximum of scalability and performance with data residing in the lake. 
+
+![Structure](docs/images/simulatte.project.structure.png "structure of the project")
 
 ## Benchmarks
 [benchmarks](docs/benchmarks.md): performances
