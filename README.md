@@ -82,7 +82,7 @@ docker logs notebooks
 Click on the `http://127.0.0.1:8888` link printed in your console.
 You see the Jupyter web page.
 
-<img alt="Entering in the notebook server" src="./docs/images/simulatte.notebooks.server.page1.png" width="33%">
+<img alt="Entering in the notebook server" src="./docs/images/simulatte.notebooks.server.page1.png" width="50%">
 
 On the left side navigate into the `work/notebooks` hierarchy.
 
