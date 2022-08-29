@@ -85,6 +85,11 @@ You see the Jupyter web page.
 <img alt="Entering in the notebook server" src="./docs/images/simulatte.notebooks.server.page1.png" width="50%">
 
 On the left side navigate into the `work/notebooks` hierarchy.
+You see ADS and ODM folders. 
+Select the decisioning capability ADS by default
+Select notebook for loyalty
+Run all cells
+Congratulations you have created a decision simulation, run it, to get insights about how your logic applies to the sampel dataset!
 
 ### Stop
 To stop all simulatte containers : 
