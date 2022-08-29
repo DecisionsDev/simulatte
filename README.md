@@ -30,7 +30,6 @@ Clone the repository:
 ```bash
 git clone https://github.com/DecisionsDev/simulatte.git
 ```
-or 
 - Using ssh protocol
 ```bash
 git clone git@github.com:DecisionsDev/simulatte.git
