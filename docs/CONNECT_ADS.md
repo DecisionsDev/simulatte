@@ -18,23 +18,34 @@ No need of a Decision Service archive download in this case.
 
 ### Configure embedded ADS invocation
 #### Retrieve ADS execution jars
-For local decision execution in the SimuLatte Javav VM the following jars are expected in the build of the micro service:
+For local decision execution in the SimuLatte Java VM the following jars are expected in the build of the micro service:
    * execution-api.jar
    * engine-de.jar
-   * jackson-databind version 2.13.2.2 and its dependencies
-   * jackson-datatype-jsr310 version 2.13.2
 
-Set the ADS_LIB_HOME variable where these jars have been made available.
-You download these jars from an ADS installation by accessing to the download service.
+Download these jars from an ADS installation by accessing to the download service : 
+```bash
+<DECISION_DESIGNER_SERVER_URL>/download/
+```
+
+You can also use cURL commands to download these jars : 
+```bash
+curl -k -s -H "Authorization: ZenApiKey $(printf "<ZEN_USERNAME>:<ZEN_APIKEY>" | base64)" <DECISION_DESIGNER_SERVER_URL>/download/execution-api_<EXECUTION_API_VERSION>.jar -o execution-api_<EXECUTION_API_VERSION>.jar
+curl -k -s -H "Authorization: ZenApiKey $(printf "<ZEN_USERNAME>:<ZEN_APIKEY>" | base64)" <DECISION_DESIGNER_SERVER_URL>/download/engine-de-api_<ENGINE_API_VERSION>.jar -o engine-de-api_<ENGINE_API_VERSION>.jar
+```
+
+Put the downloaded jars in the libs folder under the project base directory.
 
 #### Retrieve the Decision Service archive
-You specify the url in a simulation descriptor to get dynamically the compiled decision service jar.
+You specify the url in a simulation descriptor to get dynamically the compiled decision service archive (DAS).
 In the online mode this jar is dynamically read when running the simulation. In the offline mode this jar is injected in a SimuLatte simulation uber jar.
 
 We need:
 * deploymentSpaceId
 * decisionId
 
-To retrieve the decision archive, copy and paste this link in your web browser : 
-   * https://your-cpd-cp4a/ads/runtime/api/swagger-ui/#/Decision%20storage%20management/getArchive
-   * https://cpd-cp4a.apps.ads2201.cp.fyre.ibm.com/ads/runtime/api/swagger-ui/#/Decision%20storage%20management/getArchive
+To retrieve the decision archive, go to the link below and fill in the `deploymentSpaceId` and `decisionId` fields: 
+```bash
+<DECISION_DESIGNER_SERVER_URL>/runtime/api/swagger-ui/#/Decision%20storage%20management/getArchive
+```
+
+Once the DSA downloaded, you can specify the uri in a simulation descriptor to make decisions from. 

@@ -8,6 +8,7 @@ services:
     volumes:
       - $PWD/data/ADS:/home/jovyan/work/data/ADS
       - $PWD/data/ODM:/home/jovyan/work/data/ODM
+      - $PWD/libs:/home/jovyan/work/libs
       - $PWD/notebooks/ADS:/home/jovyan/work/notebooks/ADS
       - $PWD/notebooks/ODM:/home/jovyan/work/notebooks/ODM
       - $PWD/notebooks/challenges:/home/jovyan/work/notebooks/challenges
@@ -82,7 +83,7 @@ services:
       - LICENSE=accept
       - SAMPLE=false
     volumes:
-      - ./libs/ODM/docker/miniloan:/config/dbdata/
+      - ./volumes/ODM/miniloan:/config/dbdata/
 
         
   simulatte-db:

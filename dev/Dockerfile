@@ -29,4 +29,4 @@ WORKDIR $BUILD_WORKDIR
 
 COPY --from=builder /builder/simulatte-online/target/simulatte-online.jar /opt/simulatte-online.jar
 
-CMD ["/usr/bin/java", "-Xms1024M", "-Xmx4096M", "-jar", "/opt/simulatte-online.jar"]
+CMD ["/usr/bin/java", "-Xms2048M", "-Xmx10240M", "-jar", "/opt/simulatte-online.jar"]
