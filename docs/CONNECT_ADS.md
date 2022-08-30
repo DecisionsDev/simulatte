@@ -37,7 +37,7 @@ curl -k -s -H "Authorization: ZenApiKey $(printf "<ZEN_USERNAME>:<ZEN_APIKEY>" |
 Put the downloaded jars in the libs folder under the project base directory.
 
 #### Retrieve the Decision Service archive
-You specify the url in a simulation descriptor to get dynamically the compiled decision service archive (DAS).
+You specify the url in a simulation descriptor to get dynamically the compiled decision service archive (DSA).
 In the online mode this jar is dynamically read when running the simulation. In the offline mode this jar is injected in a SimuLatte simulation uber jar.
 
 We need:
