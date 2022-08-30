@@ -1,0 +1,17 @@
+{
+	"ulid": "01GBN53TR95NFTG42CMVBH0GZF",
+	"minTime": 1661777810284,
+	"maxTime": 1661781600000,
+	"stats": {
+		"numSamples": 15770,
+		"numSeries": 558,
+		"numChunks": 563
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GBN53TR95NFTG42CMVBH0GZF"
+		]
+	},
+	"version": 1
+}
