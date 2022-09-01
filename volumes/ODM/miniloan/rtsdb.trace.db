@@ -5623,3 +5623,21 @@ select count(*) from NOADDITION [42102-196]
 2022-08-29 17:12:51 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Table "DBLOCKED" not found; SQL statement:
 select count(*) from DBLOCKED [42102-196]
+2022-09-01 14:15:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-01 14:15:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DBLOCKED" not found; SQL statement:
+select count(*) from DBLOCKED [42102-196]
+2022-09-01 14:27:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-01 14:27:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DBLOCKED" not found; SQL statement:
+select count(*) from DBLOCKED [42102-196]
+2022-09-01 14:30:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-01 14:30:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DBLOCKED" not found; SQL statement:
+select count(*) from DBLOCKED [42102-196]
