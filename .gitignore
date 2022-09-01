@@ -1,26 +1,53 @@
+# IDE
+.idea/
+*.iml
+
+
+# VS Code
+.vscode/
+.settings/
+.project
+.classpath
+
+
+#development experience - DX
+gitpush.sh 
+
+
+#jar files
 *.jar
-gitpush.sh
 
 
-.vscode
+#Mac
 .DS_Store
+
+
+#CI/CD
 .travis.yml
 
 
+#dashboards 
 dashboards/**
+
+
+#draft
 draft/**
 
 
+#data
 data/simulatte-db/data/**
 data/ADS/fraudDetection/**
 
 
+#docs
 docs/simulatte_project.pptx
 
 
+#dev
 dev/simulatte-offline/decision-on-spark/**
 
 
+#notebooks
 notebooks/.idea
 notebooks/.ipynb_checkpoints
 notebooks/__pycache__
