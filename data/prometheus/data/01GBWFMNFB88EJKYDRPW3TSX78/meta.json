@@ -1,0 +1,17 @@
+{
+	"ulid": "01GBWFMNFB88EJKYDRPW3TSX78",
+	"minTime": 1661781600000,
+	"maxTime": 1661788800000,
+	"stats": {
+		"numSamples": 262016,
+		"numSeries": 567,
+		"numChunks": 2369
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GBWFMNFB88EJKYDRPW3TSX78"
+		]
+	},
+	"version": 1
+}
