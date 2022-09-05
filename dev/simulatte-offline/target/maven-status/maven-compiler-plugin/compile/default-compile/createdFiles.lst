@@ -1,0 +1,3 @@
+com/ibm/simulatte/offline/configs/modelMapper/ModelMapperConfig.class
+com/ibm/simulatte/offline/SimulatteOfflineApplication.class
+com/ibm/simulatte/offline/configs/shutdown/ShutdownManager.class

@@ -51,6 +51,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>simulatte-offline</finalName>
     </build>
 
 </project>
