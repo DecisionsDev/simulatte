@@ -1,5 +1,8 @@
-*/HELP.md
-*/target/*
+**/HELP.md
+target/
+*/target/**
+**/target/**
+**/META-INF/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
