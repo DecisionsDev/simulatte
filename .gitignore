@@ -1,7 +1,16 @@
-# IDE
+*/HELP.md
+*/target/*
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+
+### IntelliJ IDEA ###
 .idea/
 *.idea/
+*.iws
 *.iml
+*.ipr
 
 
 # VS Code
@@ -11,8 +20,17 @@
 .classpath
 
 
-#development experience - DX
-gitpush.sh 
+### STS ###
+*.apt_generated
+*.classpath
+*.factorypath
+*.project
+*.settings
+*.springBeans
+*.sts4-cache
+
+#developer experience - DX
+dx/**
 
 
 #jar files
@@ -29,10 +47,6 @@ gitpush.sh
 
 #dashboards 
 dashboards/**
-
-
-#draft
-draft/**
 
 
 #data

@@ -1,1 +1,0 @@
-mvn clean install -DskipTests=true -Ponline && java -Xms4096M -Xmx10240M -jar simulatte-online/target/simulatte-online.jar 
