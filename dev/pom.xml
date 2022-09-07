@@ -19,7 +19,7 @@
     </properties>
 
     <modules>
-        <!--module>simulatte-core-deps</module-->
+        <module>simulatte-core-deps</module>
         <module>simulatte-core</module>
     </modules>
 
