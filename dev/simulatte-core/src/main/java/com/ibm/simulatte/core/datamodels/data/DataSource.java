@@ -29,7 +29,7 @@ public class DataSource implements Serializable {
     private final String type = "DATA_SOURCE" ;
 
     @NonNull
-    private String format ;
+    private FileType format ;
 
     @NonNull
     private String uri ;

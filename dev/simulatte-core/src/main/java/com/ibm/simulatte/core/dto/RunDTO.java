@@ -2,7 +2,7 @@ package com.ibm.simulatte.core.dto;
 
 import com.ibm.simulatte.core.datamodels.data.DataSink;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
-import com.ibm.simulatte.core.datamodels.executor.Executor;
+import com.ibm.simulatte.core.datamodels.decisionService.executor.Executor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

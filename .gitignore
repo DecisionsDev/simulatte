@@ -52,9 +52,9 @@ dx/**
 dashboards/**
 
 
-#data
+#huge data volumes (not allowed by github)
 data/simulatte-db/data/**
-data/ADS/fraudDetection/**
+data/ADS/fraudDetection/** 
 
 
 #docs

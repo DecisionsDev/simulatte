@@ -3,7 +3,7 @@ package com.ibm.simulatte.core.datamodels.run;
 import com.ibm.simulatte.core.datamodels.data.DataSink;
 import com.ibm.simulatte.core.datamodels.data.DataSource;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
-import com.ibm.simulatte.core.datamodels.executor.Executor;
+import com.ibm.simulatte.core.datamodels.decisionService.executor.Executor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
