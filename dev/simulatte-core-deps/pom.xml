@@ -21,8 +21,6 @@
 
     <build>
         <plugins>
-        
-
             <!--  plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <inherited>false</inherited>
@@ -42,6 +40,28 @@
                     </execution>
                 </executions>
             </plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <target>
+                                <unzip dest="${project.basedir}/target/classes">
+                                    <fileset dir="${basedir}/../../libs" >
+                                        <include name="**/*.jar"/>
+                                    </fileset>
+                                </unzip>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>

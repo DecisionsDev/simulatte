@@ -2,7 +2,7 @@ package com.ibm.simulatte.core.execution;
 
 
 import com.ibm.simulatte.core.configs.webClient.HttpConfig;
-import com.ibm.simulatte.core.datamodels.executor.Mode;
+import com.ibm.simulatte.core.datamodels.decisionService.executor.Mode;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
@@ -40,8 +40,8 @@ import java.net.URI;
 import java.net.URL;
 import java.util.*;
 
-import static com.ibm.simulatte.core.datamodels.executor.Type.JSE;
-import static com.ibm.simulatte.core.datamodels.executor.Type.SPARK_STANDALONE;
+import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.JSE;
+import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.SPARK_STANDALONE;
 import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 
 @Service

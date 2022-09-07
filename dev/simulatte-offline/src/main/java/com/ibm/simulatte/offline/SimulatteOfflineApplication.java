@@ -1,27 +1,20 @@
 package com.ibm.simulatte.offline;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.simulatte.core.datamodels.data.DataSource;
-import com.ibm.simulatte.core.datamodels.executor.Executor;
+import com.ibm.simulatte.core.datamodels.decisionService.executor.Executor;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.simulation.Simulation;
 import com.ibm.simulatte.core.dto.RunDTO;
 import com.ibm.simulatte.core.dto.SimulationDTO;
 import com.ibm.simulatte.core.execution.DecisionServiceInvoker;
-import com.ibm.simulatte.offline.configs.shutdown.ShutdownManager;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = {"com.ibm.simulatte.core", "com.ibm.simulatte.offline"})
 public class SimulatteOfflineApplication implements CommandLineRunner {
