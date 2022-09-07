@@ -10,7 +10,7 @@
     <groupId>com.ibm</groupId>
     <artifactId>simulatte-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>simulatte-core</name>
     <description>simulatte-core</description>
     <properties>
@@ -21,45 +21,12 @@
     <dependencies>
         <!-- ADS LOCAL -->
         <dependency>
-            <groupId>com.ibm.decision</groupId>
-            <artifactId>execution-api</artifactId>
-            <version>1.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../../libs/ADS/execution-api_1.0.2.jar</systemPath>
+            <groupId>com.ibm</groupId>
+            <artifactId>simulatte-core-deps</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.ibm.decision</groupId>
-            <artifactId>engine-de-api</artifactId>
-            <version>2.14.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../../libs/ADS/engine-de-api_2.14.0.jar</systemPath>
-        </dependency>
+    
         <!-- end ADS LOCAL -->
     </dependencies>
-    <!--build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <target>
-                                <unzip dest="${project.basedir}/target/classes">
-                                    <fileset dir="${basedir}/../../libs" >
-                                        <include name="**/*.jar"/>
-                                    </fileset>
-                                </unzip>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build-->
+   
 </project>
