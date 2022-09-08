@@ -1,7 +1,0 @@
-com/ibm/simulatte/online/controllers/simulation/RunController.class
-com/ibm/simulatte/online/SimulatteOnlineApplication.class
-com/ibm/simulatte/online/controllers/simulation/RunController$1.class
-com/ibm/simulatte/online/configs/database/ConfigDB.class
-com/ibm/simulatte/online/controllers/user/AuthController.class
-com/ibm/simulatte/online/controllers/simulation/SimulationController.class
-com/ibm/simulatte/online/configs/modelMapper/ModelMapperConfig.class
