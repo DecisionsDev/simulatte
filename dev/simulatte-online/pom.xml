@@ -71,7 +71,7 @@
     <!--======================= -->
     <build>
         <plugins>
-            <!-- SPRING BOOT MAVEN PLUGIN -->
+            <!-- SPRING BOOT MAVEN PLUGIN >
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -99,9 +99,9 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <!-- end SPRING BOOT MAVEN PLUGIN -->
+            < end SPRING BOOT MAVEN PLUGIN -->
 
-            <!--plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
@@ -149,7 +149,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
 
             <!--plugin>
                 <artifactId>maven-assembly-plugin</artifactId>

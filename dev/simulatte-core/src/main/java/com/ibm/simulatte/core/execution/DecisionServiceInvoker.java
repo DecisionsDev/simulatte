@@ -217,9 +217,10 @@ public class DecisionServiceInvoker implements Serializable {
             public String call(String request) throws IOException {
                 if (provider == null) {
                     provider = new URLDecisionRunnerProvider
-                        .Builder()
-                        .addURL(new URL(String.format("file:///%s", run.getDecisionService().getEndPoint())))
-                        .build();
+                                    .Builder()
+                                    .addURL(new URL("file:////Users/tiemokodembele/Documents/internShip/simulatte-public/libs/ADS/engine-de-api_2.14.0.jar"))  // String.format("file:///%s", run.getDecisionService().getEndPoint())
+                                    .addURL(new URL("file:////Users/tiemokodembele/Documents/internShip/simulatte-public/libs/ADS/execution-api_1.0.2.jar"))
+                                    .build();
                 }
 
                 if (runner == null) {
