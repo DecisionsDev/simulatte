@@ -38,6 +38,7 @@ services:
       - $PWD/notebooks/ADS:/home/jovyan/work/notebooks/ADS
       - $PWD/notebooks/ODM:/home/jovyan/work/notebooks/ODM
       - $PWD/notebooks/challenges:/home/jovyan/work/notebooks/challenges
+      - $PWD/notebooks/optimization:/home/jovyan/work/notebooks/optimization
     command: python manage.py runserver 0.0.0.0:8000
     container_name: analytic-service
     restart: on-failure
@@ -70,6 +71,7 @@ services:
       - $PWD/notebooks/ADS:/home/jovyan/work/notebooks/ADS
       - $PWD/notebooks/ODM:/home/jovyan/work/notebooks/ODM
       - $PWD/notebooks/challenges:/home/jovyan/work/notebooks/challenges
+      - $PWD/notebooks/optimization:/home/jovyan/work/notebooks/optimization
 
   odm:
     image: icr.io/odm-k8s/odm:8.11
