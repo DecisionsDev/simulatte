@@ -1,0 +1,17 @@
+{
+	"ulid": "01GCR139KSTFEAWNXFSC20X4PF",
+	"minTime": 1662948001642,
+	"maxTime": 1662955200000,
+	"stats": {
+		"numSamples": 208320,
+		"numSeries": 424,
+		"numChunks": 1736
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GCR139KSTFEAWNXFSC20X4PF"
+		]
+	},
+	"version": 1
+}
