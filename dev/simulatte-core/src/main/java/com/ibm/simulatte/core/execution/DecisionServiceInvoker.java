@@ -45,8 +45,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.JSE;
-import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.SPARK_STANDALONE;
+import static com.ibm.simulatte.core.datamodels.decisionService.decisionService.executor.Type.JSE;
+import static com.ibm.simulatte.core.datamodels.decisionService.decisionService.executor.Type.SPARK_STANDALONE;
 import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 
 @Service
