@@ -1,10 +1,12 @@
 package com.ibm.simulatte.core.datamodels.run;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ibm.simulatte.core.datamodels.data.DataSink;
 import com.ibm.simulatte.core.datamodels.data.DataSource;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
 import com.ibm.simulatte.core.datamodels.decisionService.executor.Executor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.json.JSONArray;
@@ -14,6 +16,7 @@ import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,6 +46,9 @@ public class Run implements Serializable {
 
     @NonNull
     private Boolean trace; //Optional (if user want to change it)
+
+    @NonNull
+    private Boolean optimization ;
 
     @NonNull
     @JsonIgnore
@@ -91,5 +97,8 @@ public class Run implements Serializable {
     @JsonIgnore
     @Transient
     private transient JSONArray decisions = new JSONArray();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Parameter> optimizationParameters;
 
 }

@@ -75,3 +75,4 @@ dev/simulatte-offline/decision-on-spark/**
 notebooks/.idea
 notebooks/.ipynb_checkpoints
 notebooks/__pycache__
+notebooks/optimization/params_optimization.ipynb

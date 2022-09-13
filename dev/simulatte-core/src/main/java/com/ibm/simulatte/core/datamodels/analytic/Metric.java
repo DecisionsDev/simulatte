@@ -41,7 +41,7 @@ public class Metric implements Serializable {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="simulation_id")
+    @JoinColumn(name="simulation_uid")
     private Simulation simulation;
 
 }

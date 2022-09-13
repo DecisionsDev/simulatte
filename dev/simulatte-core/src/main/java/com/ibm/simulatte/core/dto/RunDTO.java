@@ -4,9 +4,12 @@ import com.ibm.simulatte.core.datamodels.data.DataSink;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
 import com.ibm.simulatte.core.datamodels.decisionService.executor.Executor;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,6 +42,9 @@ public class RunDTO {
     private DataSource dataSource ; //Optional (if user want to change Data source type or/and uri)
      */
 
+    @JsonProperty("optimization")
+    private Boolean optimization = false ;
+
 
     @JsonProperty("dataSink")
     private DataSink dataSink = null ; //Optional (if user want to change Data sink folder or/and file type)
@@ -51,6 +57,9 @@ public class RunDTO {
 
     @JsonProperty("notebookUri")
     private String notebookUri ;
+
+    @JsonProperty("optimizationParameters")
+    private Set<Parameter> optimizationParameters;
 
     /*
     @NonNull

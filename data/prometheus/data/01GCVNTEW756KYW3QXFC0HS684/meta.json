@@ -1,0 +1,17 @@
+{
+	"ulid": "01GCVNTEW756KYW3QXFC0HS684",
+	"minTime": 1663070400000,
+	"maxTime": 1663077600000,
+	"stats": {
+		"numSamples": 440515,
+		"numSeries": 588,
+		"numChunks": 3671
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GCVNTEW756KYW3QXFC0HS684"
+		]
+	},
+	"version": 1
+}
