@@ -1,2 +1,5 @@
 *.json linguist-detectable=false
 *.ipynb linguist-detectable=false
+
+notebooks/** linguist-vendored
+data/** linguist-vendored
