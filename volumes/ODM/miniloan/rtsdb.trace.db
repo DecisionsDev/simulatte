@@ -1,0 +1,36 @@
+2022-09-13 20:11:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-13 20:11:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "RTSRESOURCE" not found; SQL statement:
+select count(*) from RTSRESOURCE [42102-196]
+2022-09-13 20:11:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DBLOCKED" not found; SQL statement:
+select count(*) from DBLOCKED [42102-196]
+2022-09-13 20:11:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "METAMODEL" not found; SQL statement:
+select count(*) from METAMODEL [42102-196]
+2022-09-13 20:11:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "METAMODEL" not found; SQL statement:
+select count(*) from METAMODEL [42102-196]
+2022-09-13 20:11:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "SCHEMAVERSION" not found; SQL statement:
+select count(*) from SCHEMAVERSION [42102-196]
+2022-09-13 20:11:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "RTSRESOURCE" not found; SQL statement:
+select count(*) from RTSRESOURCE [42102-196]
+2022-09-13 20:11:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "SCHEMAVERSION" not found; SQL statement:
+select count(*) from SCHEMAVERSION [42102-196]
+2022-09-13 20:11:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-13 20:11:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "RTSRESOURCE" not found; SQL statement:
+select count(*) from RTSRESOURCE [42102-196]
+2022-09-13 20:11:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]
+2022-09-13 20:11:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "NOADDITION" not found; SQL statement:
+select count(*) from NOADDITION [42102-196]

@@ -1,0 +1,17 @@
+{
+	"ulid": "01GCWZ12FHR7CPWPQ1KD1RG3SE",
+	"minTime": 1663113601940,
+	"maxTime": 1663120800000,
+	"stats": {
+		"numSamples": 197195,
+		"numSeries": 400,
+		"numChunks": 1640
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GCWZ12FHR7CPWPQ1KD1RG3SE"
+		]
+	},
+	"version": 1
+}

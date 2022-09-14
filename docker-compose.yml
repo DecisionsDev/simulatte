@@ -4,20 +4,15 @@ services:
     image: simulatte/simulation-service:latest
     build:
       context: ./
-      dockerfile: ././
-      dockerfile: ./dev/DockerfileDockerfile
+      dockerfile: ./dev/Dockerfile
     volumes:
       - $PWD/data/ADS:/home/jovyan/work/data/ADS
-      - $PWD/data/ODM:/home/jovyan/work/data/ODM
-      - $PWD/libs/data/ADS:/home/jovyan/work/data/ADS
       - $PWD/data/ODM:/home/jovyan/work/data/ODM
       - $PWD/libs:/home/jovyan/work/libs
       - $PWD/notebooks/ADS:/home/jovyan/work/notebooks/ADS
       - $PWD/notebooks/ODM:/home/jovyan/work/notebooks/ODM
-      - $PWD/notebooks/challenges:/home/jovyan/work/notebooks/challenges/libs
-      - $PWD/notebooks/ADS:/home/jovyan/work/notebooks/ADS
-      - $PWD/notebooks/ODM:/home/jovyan/work/notebooks/ODM
       - $PWD/notebooks/challenges:/home/jovyan/work/notebooks/challenges
+      - $PWD/notebooks/optimization:/home/jovyan/work/notebooks/optimization
       - $HOME/.m2:/root/.m2 # Mount your local Maven repository into build container to prevent repeated downloads
     container_name: simulation-service
     restart: on-failure
@@ -182,4 +177,3 @@ services:
 #volumes:
   #notebooks:
     #external: true
-

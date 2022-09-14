@@ -46,7 +46,9 @@ public class RunService {
                                     .getUid()); //find matched data source
 
         //find matched data sink
-        newRun.getDataSink().setUri(dataService
+        newRun.getDataSink().setUri(newRun.getDataSink().getUri().length()>=10
+                ? newRun.getDataSink().getUri()
+                : dataService
                         .getDataSink(newRun.getSimulationUid(), Type.DATA_SINK.name())
                         .getFolderPath()+"/"+newRun.getDecisionService().getType().toString().toLowerCase()+"-22.0.1-"+ newRun.getName()+"-decisions-"
                         +(newRun.getTrace() ? "with" : "no")
