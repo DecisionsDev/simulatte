@@ -46,7 +46,8 @@ public class RunService {
                                     .getUid()); //find matched data source
 
         //find matched data sink
-        newRun.getDataSink().setUri(newRun.getDataSink().getUri().length()>=10
+        System.out.println("DATA SINK BY USER : "+newRun.getDataSink().getUri());
+        newRun.getDataSink().setUri((newRun.getDataSink().getUri()!=null && newRun.getDataSink().getUri().length()>=10)
                 ? newRun.getDataSink().getUri()
                 : dataService
                         .getDataSink(newRun.getSimulationUid(), Type.DATA_SINK.name())
@@ -54,6 +55,7 @@ public class RunService {
                         +(newRun.getTrace() ? "with" : "no")
                         +"trace-"+new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+"-"+newRun.getDecisions().length()+"."+newRun.getDataSink().getFormat().name().toLowerCase());
 
+        log.warn("DATA SINK URI : "+newRun.getDataSink().getUri());
         // Read data in file system
         /*JSONArray loanRequestsList = serializeToJSONArray(dataService
                 .getByDataSourceUid(newRun.getDataSourceUid())
@@ -89,5 +91,9 @@ public class RunService {
 
     public Run getRunBySimulationUid(int simulationUid, int runUid) {
         return runRepository.findBySimulationUidAndUid(simulationUid, runUid);
+    }
+
+    public Run saveRun(Run newRun){
+        return runRepository.save(newRun);
     }
 }

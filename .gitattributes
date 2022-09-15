@@ -1,3 +1,4 @@
+##### Ignore jupyter notebook language for GitHub repository #####
 *.json linguist-detectable=false
 *.ipynb linguist-detectable=false
 

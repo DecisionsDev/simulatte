@@ -14,6 +14,7 @@ import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
+import com.ibm.simulatte.core.repositories.run.RunRepository;
 import com.ibm.simulatte.core.services.data.DataSourceService;
 import com.ibm.simulatte.core.services.run.RunReportService;
 import com.ibm.simulatte.core.utils.DataManager;
@@ -45,8 +46,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.ibm.simulatte.core.datamodels.decisionService.decisionService.executor.Type.JSE;
-import static com.ibm.simulatte.core.datamodels.decisionService.decisionService.executor.Type.SPARK_STANDALONE;
+import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.JSE;
+import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.SPARK_STANDALONE;
 import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 
 @Service
@@ -72,6 +73,8 @@ public class DecisionServiceInvoker implements Serializable {
     transient DataSourceService dataSourceService;
 
     @Autowired
+    private transient RunRepository runRepository;
+    @Autowired
     private transient RunReportService runReportService;
 
     public DecisionServiceInvoker (String invokerMode){
@@ -92,7 +95,6 @@ public class DecisionServiceInvoker implements Serializable {
     }
 
     public ResponseEntity<String> sendRequest(String url, String request, Map<String, String> headerOptions) throws IOException {
-        System.out.println("REQUEST : "+request);
         ResponseEntity<String> response = getWebClient().post()
                                 .uri(URI.create(url))
                                 .headers(httpHeaders -> {
@@ -133,7 +135,6 @@ public class DecisionServiceInvoker implements Serializable {
             case "NUMBER":
                 return jsonRequest.put(key, Long.parseLong(value));
             case "BOOLEAN":
-                System.out.println("New request update : BOOLEAN ");
                 return jsonRequest.put(key, Boolean.parseBoolean(value));
             default:
                 return jsonRequest.put(key, value);
@@ -275,6 +276,9 @@ public class DecisionServiceInvoker implements Serializable {
         JavaRDD<String> responsesFromDecisionService = null;
 
         // Read data in file system
+        System.out.println("DATA TO READ : "+dataSourceService
+                .getByUid(run.getDataSourceUid())
+                .getUri());
         JSONArray requestsList = run.getExecutor().getType()==JSE
                 ? serializeToJSONArray(mode=="online"
                         ? dataSourceService
@@ -424,7 +428,8 @@ public class DecisionServiceInvoker implements Serializable {
                                                     ? String.valueOf(run.getRunReport().getNumberOfDecisions()).substring(0, String.valueOf(run.getRunReport().getNumberOfDecisions()).length() - 3) + "K"
                                                     : run.getRunReport().getNumberOfDecisions() )));
 
-        DataManager.writeInDataSink(run.getDataSink().getUri(), run.getDecisions(), responsesFromDecisionService, run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
+        DataManager.writeInDataSink(run.getOptimization(), run.getDataSink().getUri(), run.getDecisions(), responsesFromDecisionService, run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
+        if(mode=="online") runRepository.save(run) ;
     }
 
     public void compare2Runs(Run firstRun, Run secondRun, String notebookUri) throws IOException {

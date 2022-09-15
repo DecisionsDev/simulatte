@@ -34,7 +34,7 @@ public class RunDTO {
     private Date createDate;
 
     @JsonProperty("trace")
-    private Boolean trace = null ; //Optional (if user want to change)
+    private Boolean trace = false ; //Optional (if user want to change)
 
     /*
     @NonNull
@@ -47,10 +47,10 @@ public class RunDTO {
 
 
     @JsonProperty("dataSink")
-    private DataSink dataSink = null ; //Optional (if user want to change Data sink folder or/and file type)
+    private DataSink dataSink = new DataSink() ; //Optional (if user want to change Data sink folder or/and file type)
 
     @JsonProperty("decisionService")
-    private DecisionService decisionService = null ; //Optional (if user want to change Decision Service type or/and endPoint)
+    private DecisionService decisionService = new DecisionService() ; //Optional (if user want to change Decision Service type or/and endPoint)
 
     @JsonProperty("executor")
     private Executor executor;

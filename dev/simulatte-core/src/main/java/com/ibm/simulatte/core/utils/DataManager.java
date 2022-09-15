@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,11 +66,24 @@ public class DataManager {
         out.flush();
     }
 
-    public static void writeInDataSink(String filepath, JSONArray data, JavaRDD<String> dataRDD, FileType format) throws IOException {
+    private static boolean deleteDirectory(File directoryToBeDeleted) {
+        File[] allContents = directoryToBeDeleted.listFiles();
+        if (allContents != null) {
+            for (File file : allContents) {
+                deleteDirectory(file);
+            }
+        }
+        return directoryToBeDeleted.delete();
+    }
+
+    public static void writeInDataSink(boolean optimization, String filepath, JSONArray data, JavaRDD<String> dataRDD, FileType format) throws IOException {
         //Add file path validator here
         if (filepath=="" || filepath==null){ System.out.println("Data sink uri not valid."); } // Quick check
 
         if(format==FileType.JSON){
+            if(Files.exists(Paths.get(filepath)) && optimization) new File(filepath).delete();
+            System.out.println("JUST BEFORE FILE CREATION");
+            System.out.println("OUTPUT FILE : "+filepath);
             OutputStream out = Files.newOutputStream(Paths.get(filepath), CREATE, APPEND);
             for(Object line: data){
                 out.write((line.toString()+"\n").getBytes(UTF_8));
@@ -77,6 +91,8 @@ public class DataManager {
             out.flush();
         }
         if(format==FileType.PARQUET){
+            Path path = Paths.get(filepath.replaceFirst("[.][^.]+$", ""));
+            if (Files.exists(path)) deleteDirectory(path.toFile());
             dataRDD.saveAsTextFile(filepath.replaceFirst("[.][^.]+$", ""));
         }
     }

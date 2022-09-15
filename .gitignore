@@ -32,6 +32,11 @@ target/
 *.springBeans
 *.sts4-cache
 
+
+#python genereted folders
+.ipynb_checkpoints
+
+
 #developer experience - DX
 dx/**
 
@@ -73,6 +78,7 @@ dev/simulatte-offline/decision-on-spark/**
 
 #notebooks
 notebooks/.idea
-notebooks/.ipynb_checkpoints
+notebooks/*.ipynb_checkpoints
 notebooks/__pycache__
-notebooks/optimization/params_optimization.ipynb
+notebooks/optimization/**
+!notebooks/optimization/README.md
