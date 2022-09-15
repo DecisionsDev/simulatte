@@ -12,8 +12,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class DataSourceService implements Serializable {
 
-    @Autowired
+
     DataSourceRepository dataSourceRepository;
+
+    @Autowired
+    public DataSourceService(DataSourceRepository dataSourceRepository) {
+        this.dataSourceRepository = dataSourceRepository;
+    }
 
     public DataSource findBySimulationUid(int simulationUid) {
         return dataSourceRepository.findBySimulationUid(simulationUid);

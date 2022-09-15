@@ -10,10 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataService {
 
-    @Autowired
+    final
     DataSourceRepository dataSourceRepository;
-    @Autowired
+    final
     DataSinkRepository dataSinkRepository;
+
+    public DataService(DataSourceRepository dataSourceRepository, DataSinkRepository dataSinkRepository) {
+        this.dataSourceRepository = dataSourceRepository;
+        this.dataSinkRepository = dataSinkRepository;
+    }
 
     public DataSource getByDataSourceUid(int uid) {
         return dataSourceRepository.findByUid(uid);

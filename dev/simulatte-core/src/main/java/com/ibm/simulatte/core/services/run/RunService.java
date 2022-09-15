@@ -21,20 +21,26 @@ import java.util.List;
 @Slf4j
 @Service
 public class RunService {
-    @Autowired
+    final
     RunRepository runRepository;
 
-    @Autowired
+    final
     SimulationService simulationService;
 
-    @Autowired
+    final
     JavaSparkContext javaSparkContext;
 
-    @Autowired
-    private DataService dataService;
+    private final DataService dataService;
 
-    @Autowired
-    private DecisionServiceInvoker decisionServiceInvoker;
+    private final DecisionServiceInvoker decisionServiceInvoker;
+
+    public RunService(RunRepository runRepository, SimulationService simulationService, JavaSparkContext javaSparkContext, DataService dataService, DecisionServiceInvoker decisionServiceInvoker) {
+        this.runRepository = runRepository;
+        this.simulationService = simulationService;
+        this.javaSparkContext = javaSparkContext;
+        this.dataService = dataService;
+        this.decisionServiceInvoker = decisionServiceInvoker;
+    }
 
     public Run startToRun(Run newRun) throws Exception {
         //set run report

@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RunReportService {
 
-    @Autowired
-    private RunReportRepository runReportRepository;
+    private final RunReportRepository runReportRepository;
+
+    public RunReportService(RunReportRepository runReportRepository) {
+        this.runReportRepository = runReportRepository;
+    }
+
     public RunReport getByRunReportUid(int uid) {
         return runReportRepository.findByUid(uid);
     }

@@ -14,11 +14,13 @@ import java.util.List;
 
 @Slf4j
 @Service
-@AllArgsConstructor
 public class SimulationService {
 
-    @Autowired
-    private SimulationRepository simulationRepository;
+    private final SimulationRepository simulationRepository;
+
+    public SimulationService(SimulationRepository simulationRepository) {
+        this.simulationRepository = simulationRepository;
+    }
 
     public Simulation create(Simulation newSimulation) {
         //implement required attributes here

@@ -17,8 +17,12 @@ import java.util.Map;
 @Slf4j
 public class AnalyticInvoker {
 
-    @Autowired
-    private DecisionServiceInvoker decisionServiceInvoker;
+    private final DecisionServiceInvoker decisionServiceInvoker;
+
+    public AnalyticInvoker(DecisionServiceInvoker decisionServiceInvoker) {
+        this.decisionServiceInvoker = decisionServiceInvoker;
+    }
+
     public static int executeNotebookFromShellCommand(String absolutePath, String [] shellCommand){
         ProcessBuilder processBuilder = new ProcessBuilder(shellCommand);
         processBuilder.directory(new File(absolutePath));

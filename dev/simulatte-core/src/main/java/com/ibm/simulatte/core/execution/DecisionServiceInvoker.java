@@ -19,10 +19,7 @@ import com.ibm.simulatte.core.services.data.DataSourceService;
 import com.ibm.simulatte.core.services.run.RunReportService;
 import com.ibm.simulatte.core.utils.DataManager;
 import com.ibm.simulatte.core.utils.DefaultValue;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -63,22 +60,26 @@ public class DecisionServiceInvoker implements Serializable {
 
     public URLDecisionRunnerProvider provider = null;
     public JSONDecisionRunner runner = null;
-    @Autowired
     private transient WebClient webClient;
 
-    @Autowired
     transient JavaSparkContext javaSparkContext;
 
-    @Autowired
     transient DataSourceService dataSourceService;
 
-    @Autowired
     private transient RunRepository runRepository;
-    @Autowired
     private transient RunReportService runReportService;
 
     public DecisionServiceInvoker (String invokerMode){
         this.mode = invokerMode;
+    }
+
+    @Autowired
+    public DecisionServiceInvoker(WebClient webClient, JavaSparkContext javaSparkContext, DataSourceService dataSourceService, RunRepository runRepository, RunReportService runReportService) {
+        this.webClient = webClient;
+        this.javaSparkContext = javaSparkContext;
+        this.dataSourceService = dataSourceService;
+        this.runRepository = runRepository;
+        this.runReportService = runReportService;
     }
 
     final private WebClient getWebClient() {

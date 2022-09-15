@@ -19,10 +19,10 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = {"com.ibm.simulatte.core", "com.ibm.simulatte.offline"})
 public class SimulatteOfflineApplication implements CommandLineRunner {
 
-    @Autowired
+    final
     ModelMapper modelMapper;
 
-    @Autowired
+    final
     ObjectMapper objectMapper;
 
     //@Value("${simulation.spec}")
@@ -30,6 +30,11 @@ public class SimulatteOfflineApplication implements CommandLineRunner {
 
     //@Value("${run.spec}")
     private String newRunSpec = "";
+
+    public SimulatteOfflineApplication(ModelMapper modelMapper, ObjectMapper objectMapper) {
+        this.modelMapper = modelMapper;
+        this.objectMapper = objectMapper;
+    }
 
     public static void main(String[] args) {
        SpringApplication.run(SimulatteOfflineApplication.class, args);
@@ -45,7 +50,7 @@ public class SimulatteOfflineApplication implements CommandLineRunner {
             newRunSpec = "{\"uid\":206,\"simulationUid\":46,\"name\":\"frauddetection\",\"description\":\"string\",\"createDate\":\"2022-08-23T16:06:10.127+00:00\",\"trace\":false,\"dataSink\":{\"format\":\"PARQUET\",\"folderPath\":\"/Users/tiemokodembele/Documents/internShip/simulatte/data/ADS/fraudDetection\",\"uri\":\"/Users/tiemokodembele/Documents/internShip/simulatte/data/ADS/fraudDetection/ads-22.0.1-frauddetection-decisions-notrace-20220823_180610-10K.parquet\",\"username\":\"string\",\"password\":\"string\",\"uid\":298},\"decisionService\":{\"type\":\"ADS\",\"endPoint\":\"/Users/tiemokodembele/Documents/internShip/simulatte/dev/simulatte-core/src/main/resources/lib/fraud_detection_1.2.0.jar\",\"authType\":\"BASIC_AUTH\",\"operationName\":\"detection\",\"username\":\"drsManager\",\"password\":\"manager\",\"key\":\"string\",\"value\":\"string\",\"token\":\"MDgyMjEzNzA2OjB6M3lwc29MZTJOOE1sQ2pDVDVSVXlmSHNXRDhDbjBKc1ZKZlN1aEI=\",\"headerPrefix\":\"string\",\"uid\":252},\"executor\":{\"type\":\"SPARK_STANDALONE\",\"mode\":\"LOCAL\",\"capability\":\"ODM\",\"uid\":206},\"runReport\":{\"uid\":206,\"status\":\"FINISHED\",\"numberOfDecisions\":10000,\"numberOfRequests\":10000,\"progress\":0.0,\"duration\":557,\"numberOfDecisionsPerSecond\":17953.322},\"notebookUri\":\"/Users/tiemokodembele/Documents/internShip/simulatte/notebook/ads-vs-odm-loanvalidation-analytics.ipynb\"}";
         }
 
-        JSONObject newSimulationObject = new JSONObject(newSimulationSpec);
+        /*JSONObject newSimulationObject = new JSONObject(newSimulationSpec);
         if(newSimulationObject.has("executor")){
             Executor executor = objectMapper.readValue(newSimulationObject.remove("executor").toString(), Executor.class);
             SimulationDTO newSimulationDTO = objectMapper.readValue(newSimulationObject.toString(), SimulationDTO.class);
@@ -62,7 +67,7 @@ public class SimulatteOfflineApplication implements CommandLineRunner {
             Simulation newSimulation = convertDtoToEntity(newSimulationDTO);
             System.out.println("SIMU : "+newSimulation.toString());
             //new ShutdownManager().initiateShutdown("simulation doesn't have any 'executor' key.");
-        }
+        }*/
 
         /*if(true){
             new ShutdownManager().initiateShutdown("simulation doesn't have any 'executor' key.");
