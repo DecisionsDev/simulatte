@@ -1,11 +1,15 @@
-package com.ibm.simulatte.core.execution;
+package com.ibm.simulatte.core.offlineExec;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ibm.simulatte.core.configs.webClient.HttpConfig;
 import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
 import com.ibm.simulatte.core.datamodels.decisionService.Type;
+import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.utils.DefaultValue;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +18,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URI;
 import java.util.Base64;
 import java.util.HashMap;
@@ -21,14 +26,16 @@ import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
-abstract class ServiceInvoker {
+public abstract class Invoker implements Serializable {
+
+    //To implement
+    public abstract void getDecisionsFromDecisionService(Run run) throws Exception;
+    public abstract void compare2Runs(Run firstRun, Run secondRun, String notebookUri) throws IOException;
 
     @Autowired
     private transient WebClient webClient;
 
-    public abstract void getDecisionsFromDecisionService(Run run) throws Exception;
-
-    final private WebClient getWebClient() {
+    public WebClient getWebClient() {
         if(this.webClient==null) {
             try {
                 return new HttpConfig().webClient();
@@ -58,21 +65,6 @@ abstract class ServiceInvoker {
         return response;
     }
 
-
-    private ResponseEntity<String> sendRequestWithParams(Run run, String request, Map<String, String> headerOptions) throws IOException {
-        JSONObject jsonRequest = new JSONObject(request);
-        return sendRequest((run.getDecisionService().getType()== Type.ADS && run.getTrace())
-                        ? run.getDecisionService().getEndPoint().replace("/execute","/extendedExecute")
-                        : run.getDecisionService().getEndPoint(),
-                (run.getDecisionService().getType()== Type.ODM && run.getTrace()) //check if ODM TRACE is wanted
-                        ? jsonRequest.put("__TraceFilter__", new JSONObject(DefaultValue.ODM_DEFAULT_TRACE_CONFIG)).toString()
-                        : (run.getDecisionService().getType()== Type.ADS && run.getTrace())
-                        ? new JSONObject(DefaultValue.ADS_DEFAULT_TRACE_CONFIG).put("input",jsonRequest).toString()
-                        : jsonRequest.toString(),
-                headerOptions);
-    }
-
-
     public Mono<JSONObject> sendRequestFlux(String url, String request, Map<String, String> headerOptions) {
         return getWebClient().post()
                 .uri(URI.create(url))
@@ -86,7 +78,42 @@ abstract class ServiceInvoker {
                 .bodyToMono(JSONObject.class);
     }
 
-    private JSONObject decisionDataFormatter(Run run, String request, String responseBody) {
+    public JSONObject updateRequestParams(JSONObject jsonRequest, String key, String value, String type) throws IOException {
+        switch (type){
+            case "JSON":
+                try {
+                    return jsonRequest.put(key, new JSONObject(value));
+                } catch (JSONException e) { throw new JSONException("Json data not parsable."); }
+            case "INTEGER":
+                return jsonRequest.put(key, Integer.parseInt(value));
+            case "NUMBER":
+                return jsonRequest.put(key, Long.parseLong(value));
+            case "BOOLEAN":
+                return jsonRequest.put(key, Boolean.parseBoolean(value));
+            default:
+                return jsonRequest.put(key, value);
+        }
+    }
+
+    public ResponseEntity<String> sendRequestWithParams(Run run, String request, Map<String, String> headerOptions) throws IOException {
+        JSONObject jsonRequest = new JSONObject(request);
+        if (run.getOptimization()) {  // for optimization
+            for(Parameter parameter : run.getOptimizationParameters()){
+                jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
+            }
+        }
+        return sendRequest((run.getDecisionService().getType()== Type.ADS && run.getTrace())
+                        ? run.getDecisionService().getEndPoint().replace("/execute","/extendedExecute")
+                        : run.getDecisionService().getEndPoint(),
+                (run.getDecisionService().getType()== Type.ODM && run.getTrace()) //check if ODM TRACE is wanted
+                        ? jsonRequest.put("__TraceFilter__", new JSONObject(DefaultValue.ODM_DEFAULT_TRACE_CONFIG)).toString()
+                        : (run.getDecisionService().getType()== Type.ADS && run.getTrace())
+                        ? new JSONObject(DefaultValue.ADS_DEFAULT_TRACE_CONFIG).put("input",jsonRequest).toString()
+                        : jsonRequest.toString(),
+                headerOptions);
+    }
+
+    public JSONObject decisionDataFormatter(Run run, String request, String responseBody) {
         JSONObject jsonResponseBody = new JSONObject(responseBody);
         JSONObject jsonRequest = new JSONObject(request);
 
@@ -111,7 +138,6 @@ abstract class ServiceInvoker {
 
         return decision;
     }
-
 
     public Map<String, String> getHeaderOptions(DecisionService decisionService){
         Map<String, String> headerOptions = new HashMap<String, String>();
