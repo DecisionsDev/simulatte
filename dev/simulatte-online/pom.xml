@@ -18,6 +18,7 @@
         <start-class>com.ibm.simulatte.online.SimulatteOnlineApplication</start-class>
     </properties>
     <dependencies>
+        
         <!-- MONITORING -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
