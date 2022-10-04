@@ -59,6 +59,7 @@ dashboards/**
 
 #huge data volumes (not allowed by github)
 data/simulatte-db/data/**
+data/ADS/fraudDetection
 data/ADS/fraudDetection/*.json
 data/ADS/fraudDetection/ads-22.0.1-frauddetection-requests-20220809_192453-30M
 data/ADS/fraudDetection/ads-22.0.1-frauddetection-requests-20220809_201449-30M

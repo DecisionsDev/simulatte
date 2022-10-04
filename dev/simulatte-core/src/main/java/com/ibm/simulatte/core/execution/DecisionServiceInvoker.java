@@ -143,7 +143,7 @@ public class DecisionServiceInvoker implements Serializable {
 
     private ResponseEntity<String> sendRequestWithParams(Run run, String request, Map<String, String> headerOptions) throws IOException {
         JSONObject jsonRequest = new JSONObject(request);
-        if (run.getOptimization()) {  // for optimization
+        if (run.getOptimization() && !run.getOptimizationParameters().isEmpty()) {  // for optimization
             for(Parameter parameter : run.getOptimizationParameters()){
                 jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
             }
@@ -220,7 +220,6 @@ public class DecisionServiceInvoker implements Serializable {
         return headerOptions;
     }
 
-
     public boolean setRunAnalytics(int runUid, RunReport runReport, int numberOfRequest){
         runReport.setNumberOfDecisions(numberOfRequest);
         runReport.setProgress((float) (numberOfRequest)/ runReport.getNumberOfRequests());
@@ -256,11 +255,12 @@ public class DecisionServiceInvoker implements Serializable {
                     runner = provider.getDecisionRunner(run.getDecisionService().getOperationName(), JSONDecisionRunner.class);
                 }
 
-                if (run.getOptimization()) {  // for optimization
+                if (run.getOptimization() && !run.getOptimizationParameters().isEmpty()) {  // for optimization
                     JSONObject jsonRequest = new JSONObject(request);
                     for(Parameter parameter : run.getOptimizationParameters()){
                         jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
                     }
+                    System.out.println("ACTUAL FRAUD : "+ (jsonRequest.has("actualFraud") ? jsonRequest.get("actualFraud") : ""));
                     request = jsonRequest.toString();
                 }
 
@@ -271,14 +271,11 @@ public class DecisionServiceInvoker implements Serializable {
                 return decisionData.toString();
             }
         };
-        
-        //RDD 
+
+        //RDD
         JavaRDD<String> responsesFromDecisionService = null;
 
         // Read data in file system
-        System.out.println("DATA TO READ : "+dataSourceService
-                .getByUid(run.getDataSourceUid())
-                .getUri());
         JSONArray requestsList = run.getExecutor().getType()==JSE
                 ? serializeToJSONArray(mode=="online"
                         ? dataSourceService
@@ -323,7 +320,12 @@ public class DecisionServiceInvoker implements Serializable {
             run.setRequestList(loanRequestsList); //set requestList
 
             if (run.getExecutor().getMode()== Mode.REMOTE){
-                /*Flux.fromIterable(run.getLoanRequestList())
+
+                /*
+                **********************************************************************************
+                **************** Simultaneous WebClient Calls with Spring WebFlux ****************
+                **********************************************************************************
+                Flux.fromIterable(run.getLoanRequestList())
                         .parallel()
                         .map(request -> sendRequestFlux(run.getDecisionService().getEndPoint(), new JSONObject(request).toString(), headerOptions))
                         .subscribe(response -> System.out.println(Thread.currentThread().getName() + " from first list, got " + response.block().toString()));
@@ -346,7 +348,11 @@ public class DecisionServiceInvoker implements Serializable {
                         .collectList()
                         .block();
 
-                run.setDecisions(new JSONArray(responses));*/
+                run.setDecisions(new JSONArray(responses));
+                **********************************************************************************
+                **********************************************************************************
+                **********************************************************************************
+                */
                 while(counter < run.getRequestList().length()){
                     String request = run.getRequestList().getJSONObject(counter).toString();
                     String responseBody = sendRequestWithParams(run, request, headerOptions).getBody();
@@ -368,7 +374,7 @@ public class DecisionServiceInvoker implements Serializable {
                 JSONDecisionRunner runner = provider.getDecisionRunner(run.getDecisionService().getOperationName(), JSONDecisionRunner.class);
                 while(counter < run.getRequestList().length()){
                     JSONObject jsonRequest = run.getRequestList().getJSONObject(counter);
-                    if(run.getOptimization()) {
+                    if(run.getOptimization() && !run.getOptimizationParameters().isEmpty()) {
                         for(Parameter parameter : run.getOptimizationParameters()){
                             jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
                         }
@@ -428,7 +434,7 @@ public class DecisionServiceInvoker implements Serializable {
                                                     ? String.valueOf(run.getRunReport().getNumberOfDecisions()).substring(0, String.valueOf(run.getRunReport().getNumberOfDecisions()).length() - 3) + "K"
                                                     : run.getRunReport().getNumberOfDecisions() )));
 
-        DataManager.writeInDataSink(run.getOptimization(), run.getDataSink().getUri(), run.getDecisions(), responsesFromDecisionService, run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
+        DataManager.writeInDataSink(run.getOptimization() || !run.getOptimizationParameters().isEmpty(), run.getDataSink().getUri(), run.getDecisions(), responsesFromDecisionService, run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
         if(mode=="online") runRepository.save(run) ;
     }
 

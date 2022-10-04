@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-03gkyxaj&kv5!tdqmh4g-q_0l7e8we*6(af^=5+kfjvsd8_%kw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['analytic-server', 'localhost']
+ALLOWED_HOSTS = ['analytic-service', 'localhost']
 
 
 # Application definition

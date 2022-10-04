@@ -49,6 +49,7 @@ def get_from_url(request):
         file = open(data_sink_uri, "r+")
         file.truncate(0)
         file.close()
+    else : file = open(data_sink_uri, 'w+')
 
     skip_header = True
     counter = 0

@@ -27,7 +27,7 @@ public class SparkConfig {
         SparkConf sparkConf = new SparkConf()
                 .setAppName(appName)
                 .setSparkHome(sparkHome)
-                .set("spark.driver.maxResultSize", "4g")
+                .set("spark.driver.maxResultSize", "15g")
                 .setMaster(masterUri);
 
         return sparkConf;
@@ -37,6 +37,7 @@ public class SparkConfig {
     public JavaSparkContext javaSparkContext() {
         return new JavaSparkContext(sparkConf());
     }
+
 
     @Bean
     public SparkSession sparkSession() {

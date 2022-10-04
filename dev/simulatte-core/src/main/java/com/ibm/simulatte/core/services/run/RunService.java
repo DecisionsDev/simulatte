@@ -55,7 +55,6 @@ public class RunService {
                         +(newRun.getTrace() ? "with" : "no")
                         +"trace-"+new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+"-"+newRun.getDecisions().length()+"."+newRun.getDataSink().getFormat().name().toLowerCase());
 
-        log.warn("DATA SINK URI : "+newRun.getDataSink().getUri());
         // Read data in file system
         /*JSONArray loanRequestsList = serializeToJSONArray(dataService
                 .getByDataSourceUid(newRun.getDataSourceUid())

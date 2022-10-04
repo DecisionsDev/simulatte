@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.*;
 
 @Slf4j
 public class DataManager {
@@ -82,9 +81,8 @@ public class DataManager {
 
         if(format==FileType.JSON){
             if(Files.exists(Paths.get(filepath)) && optimization) new File(filepath).delete();
-            System.out.println("JUST BEFORE FILE CREATION");
-            System.out.println("OUTPUT FILE : "+filepath);
             OutputStream out = Files.newOutputStream(Paths.get(filepath), CREATE, APPEND);
+            if(Files.exists(Paths.get(filepath))) System.out.println("This file : "+filepath+" is not created as expected !");
             for(Object line: data){
                 out.write((line.toString()+"\n").getBytes(UTF_8));
             }

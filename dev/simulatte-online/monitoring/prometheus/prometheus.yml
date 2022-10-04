@@ -23,6 +23,6 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['9.144.171.110:8080'] #10.245.41.7 #9.144.171.110 #simulation-server
+      - targets: ['simulation-service:8080'] #10.245.41.7 #9.144.171.110 #simulation-server
         labels:
           application: 'Simulatte Application'

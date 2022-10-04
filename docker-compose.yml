@@ -27,6 +27,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=simulatte
       - SPRING_DATASOURCE_PASSWORD=simulatte
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SIMULATTE_ANALYTIC_HOSTNAME=analytic-service
   
   analytic-service:
     image: simulatte/analytic-service
@@ -66,6 +67,7 @@ services:
       - SIMULATTE_BASE_DIR=/home/jovyan/work
       - SIMULATTE_ONLINE_HOSTNAME=simulation-service
       - SIMULATTE_ANALYTIC_HOSTNAME=analytic-service
+      - SIMULATTE_ODM_HOSTNAME=odm
     volumes:
       - $PWD/data/ADS:/home/jovyan/work/data/ADS
       - $PWD/data/ODM:/home/jovyan/work/data/ODM
@@ -76,7 +78,7 @@ services:
 
   odm:
     image: icr.io/odm-k8s/odm:8.11
-    container_name: odm-k8s
+    container_name: odm
     restart: on-failure
     ports:
       - "9060:9060"
@@ -145,8 +147,29 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SERVER_DOMAIN=localhost
+      - DS_PROMETHEUS=prometheus
     ports:
       - "3000:3000"
+
+
+  keycloak:
+    image: docker.io/bitnami/keycloak:19
+    depends_on:
+      - simulatte-db
+    ports:
+      - "8090:8090"
+    environment:
+      - KEYCLOAK_HTTP_PORT=8090
+
+      - KEYCLOAK_ADMIN_USER=simulatte
+      - KEYCLOAK_ADMIN_PASSWORD=simulatte
+
+      - KEYCLOAK_DATABASE_HOST=simulatte-db
+      - KEYCLOAK_DATABASE_PORT=5432
+      - KEYCLOAK_DATABASE_NAME=simulatte
+      - KEYCLOAK_DATABASE_USER=simulatte
+      - KEYCLOAK_DATABASE_PASSWORD=simulatte
+
 
 
 #  alertmanager:
