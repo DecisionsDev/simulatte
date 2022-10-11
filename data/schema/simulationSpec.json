@@ -6,15 +6,15 @@
     "lastUpdateDate": "2022-09-21T13:01:40.928+00:00",
     "trace": true,
     "dataSource": {
-      "format": "PARQUET",
-      "uri": "/Users/tiemokodembele/Documents/internShip/simulatte-public/data/ADS/fraudDetection/ads-22.0.1-frauddetection-requests-20220809_201449-30M",
+      "format": "JSON",
+      "uri": "./data/ADS/fraudDetection/ads-22.0.1-frauddetection-requests-20221005_154303-20M.json",
       "username": "string",
       "password": "string",
       "uid": 3856
     },
     "dataSink": {
       "format": "PARQUET",
-      "folderPath": "/Users/tiemokodembele/Documents/internShip/simulatte-public/data/ADS/fraudDetection",
+      "folderPath": "./data/ADS/fraudDetection",
       "uri": null,
       "username": "string",
       "password": "string",
@@ -22,7 +22,7 @@
     },
     "decisionService": {
       "type": "ADS",
-      "endPoint": "/Users/tiemokodembele/Documents/internShip/simulatte-public/libs/ADS/DSA/fraud_detection_1.9.0.jar",
+      "endPoint": "./libs/ADS/DSA/fraud_detection_1.9.0.jar",
       "authType": "BASIC_AUTH",
       "operationName": "detect-fraud-in-card-transactions",
       "username": "drsManager",

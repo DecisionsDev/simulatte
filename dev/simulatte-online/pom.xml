@@ -18,7 +18,31 @@
         <start-class>com.ibm.simulatte.online.SimulatteOnlineApplication</start-class>
     </properties>
     <dependencies>
-        
+        <!-- SECURITY - OPENID CONNECT -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>2.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+            <version>2.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-boot-starter</artifactId>
+            <version>19.0.2</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.keycloak.bom</groupId>
+            <artifactId>keycloak-adapter-bom</artifactId>
+            <version>19.0.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency-->
+        <!-- end SECURITY - OPENID CONNECT -->
+
         <!-- MONITORING -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,6 +90,19 @@
         <!-- end SIMULATTE-CORE -->
 
     </dependencies>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>19.0.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!--======================= -->
     <!-- BUILD PROCESS & LAYOUT -->

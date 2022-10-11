@@ -1,5 +1,6 @@
 package com.ibm.simulatte.online.controllers.simulation;
 
+import com.ibm.simulatte.core.datamodels.user.Role;
 import com.ibm.simulatte.core.dto.SimulationDTO;
 import com.ibm.simulatte.core.datamodels.simulation.Simulation;
 import com.ibm.simulatte.core.services.simulation.SimulationService;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -51,6 +53,7 @@ public class SimulationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "create a successful simulation object"),
             @ApiResponse(responseCode = "404", description = "Fail to create simulation object") })
+    @RolesAllowed("user")
     @PostMapping("/create")
     public ResponseEntity<Simulation> createSimulation(@RequestBody SimulationDTO newSimulationDTO) {
         Simulation newSimulation = convertDtoToEntity(newSimulationDTO);
@@ -79,10 +82,25 @@ public class SimulationController {
         return ResponseEntity.ok(simulationService.update(updatedSimulation));
     }
 
+    @RolesAllowed({"user", "admin"})
     @GetMapping("/about")
     public ResponseEntity<String> landingPage(){
         System.out.println("SIMULATTE DESCRIPTION");
         return ResponseEntity.ok("<h1>SIMULATTE</h1>");
+    }
+
+    @RolesAllowed({"user", "admin", })
+    @GetMapping("/test")
+    public String testPage(){
+        System.out.println("SIMULATTE DESCRIPTION");
+        return "<h1>SIMULATTE</h1>";
+    }
+
+    @RolesAllowed("admin")
+    @GetMapping("/admin")
+    public ResponseEntity<String> adminPage(){
+        System.out.println("SIMULATTE ADMIN CONSOLE");
+        return ResponseEntity.ok("<h1>SIMULATTE ADMIN CONSOLE</h1>");
     }
 
     private Simulation convertDtoToEntity(SimulationDTO simulationDto)  {

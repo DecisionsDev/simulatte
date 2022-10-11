@@ -82,16 +82,16 @@ public class DataManager {
         if(format==FileType.JSON){
             if(Files.exists(Paths.get(filepath)) && optimization) new File(filepath).delete();
             OutputStream out = Files.newOutputStream(Paths.get(filepath), CREATE, APPEND);
-            if(Files.exists(Paths.get(filepath))) System.out.println("This file : "+filepath+" is not created as expected !");
+            if(!Files.exists(Paths.get(filepath))) System.out.println("This file : "+filepath+" is not created as expected !");
             for(Object line: data){
                 out.write((line.toString()+"\n").getBytes(UTF_8));
             }
             out.flush();
         }
         if(format==FileType.PARQUET){
-            Path path = Paths.get(filepath.replaceFirst("[.][^.]+$", ""));
+            Path path = Paths.get(filepath); //filepath.replaceFirst("[.][^.]+$", "")
             if (Files.exists(path)) deleteDirectory(path.toFile());
-            dataRDD.saveAsTextFile(filepath.replaceFirst("[.][^.]+$", ""));
+            dataRDD.saveAsTextFile(filepath); //filepath.replaceFirst("[.][^.]+$", "")
         }
     }
 }

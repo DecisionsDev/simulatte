@@ -1,4 +1,4 @@
-package com.ibm.simulatte.core.execution;
+package com.ibm.simulatte.core.execution.online;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,45 +6,33 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ibm.decision.run.JSONDecisionRunner;
 import com.ibm.decision.run.provider.DecisionRunnerProvider;
 import com.ibm.decision.run.provider.URLDecisionRunnerProvider;
-import com.ibm.simulatte.core.configs.webClient.HttpConfig;
-import com.ibm.simulatte.core.datamodels.decisionService.DecisionService;
-import com.ibm.simulatte.core.datamodels.decisionService.Type;
+import com.ibm.simulatte.core.datamodels.data.FileType;
 import com.ibm.simulatte.core.datamodels.decisionService.executor.Mode;
 import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
+import com.ibm.simulatte.core.execution.common.Invoker;
 import com.ibm.simulatte.core.repositories.run.RunRepository;
-import com.ibm.simulatte.core.services.data.DataSourceService;
+import com.ibm.simulatte.core.services.data.DataService;
 import com.ibm.simulatte.core.services.run.RunReportService;
 import com.ibm.simulatte.core.utils.DataManager;
-import com.ibm.simulatte.core.utils.DefaultValue;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.URI;
 import java.net.URL;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.JSE;
 import static com.ibm.simulatte.core.datamodels.decisionService.executor.Type.SPARK_STANDALONE;
@@ -54,15 +42,13 @@ import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
-public class DecisionServiceInvoker implements Serializable {
+public class OnlineServiceInvoker extends Invoker implements Serializable {
 
     public static boolean INTERRUPT = false; //Test for PAUSE/CONTINUE
 
-    @Getter @Setter
-    public String mode = "online";
-
     public URLDecisionRunnerProvider provider = null;
     public JSONDecisionRunner runner = null;
+
     @Autowired
     private transient WebClient webClient;
 
@@ -70,17 +56,14 @@ public class DecisionServiceInvoker implements Serializable {
     transient JavaSparkContext javaSparkContext;
 
     @Autowired
-    transient DataSourceService dataSourceService;
+    transient DataService dataService;
 
     @Autowired
     private transient RunRepository runRepository;
     @Autowired
     private transient RunReportService runReportService;
 
-    public DecisionServiceInvoker (String invokerMode){
-        this.mode = invokerMode;
-    }
-
+    /*
     final private WebClient getWebClient() {
         if(this.webClient==null) {
             try {
@@ -143,7 +126,7 @@ public class DecisionServiceInvoker implements Serializable {
 
     private ResponseEntity<String> sendRequestWithParams(Run run, String request, Map<String, String> headerOptions) throws IOException {
         JSONObject jsonRequest = new JSONObject(request);
-        if (run.getOptimization() && !run.getOptimizationParameters().isEmpty()) {  // for optimization
+        if (run.getOptimization()) {  // for optimization
             for(Parameter parameter : run.getOptimizationParameters()){
                 jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
             }
@@ -219,28 +202,25 @@ public class DecisionServiceInvoker implements Serializable {
         }
         return headerOptions;
     }
+     */
 
     public boolean setRunAnalytics(int runUid, RunReport runReport, int numberOfRequest){
-        runReport.setNumberOfDecisions(numberOfRequest);
-        runReport.setProgress((float) (numberOfRequest)/ runReport.getNumberOfRequests());
-        if(mode=="online"){
-            runReportService.setNumberOfDecisionsAndProgress(runReport.getUid(), numberOfRequest,
-                    (float) (numberOfRequest / runReport.getNumberOfRequests())); //Set run analytics
+        runReportService.setNumberOfDecisionsAndProgress(runReport.getUid(), numberOfRequest,
+                (float) (numberOfRequest / runReport.getNumberOfRequests())); //Set run analytics
 
-            runReport = runReportService.getByRunReportUid(runUid); //update run analytics from database
+        runReport = runReportService.getByRunReportUid(runUid); //update run analytics from database
 
-            if(INTERRUPT || runReport.getStatus()== RunStatusType.PAUSED ||
-                    runReport.getStatus()== RunStatusType.STOPPED){
-                log.info("Your simulation stop running !");
-                return true;
-            }
+        if(INTERRUPT || runReport.getStatus()== RunStatusType.PAUSED ||
+                runReport.getStatus()== RunStatusType.STOPPED){
+            log.info("Your simulation stop running !");
+            return true;
         }
         return false;
     }
 
     ///////////////// MANAGE SIMULATION RUN OBJECT ///////////////////
     //@Async("customAsyncExecutor")
-    public void getDecisionsFromDecisionService(Run run) throws Exception {
+    public Run getDecisionsFromDecisionService(Run run) throws Exception {
         Function<String, String> executeDecisionService = new Function<String, String>() {
 
             public String call(String request) throws IOException {
@@ -260,7 +240,6 @@ public class DecisionServiceInvoker implements Serializable {
                     for(Parameter parameter : run.getOptimizationParameters()){
                         jsonRequest = updateRequestParams(jsonRequest, parameter.getName(), parameter.getValue(), parameter.getType());
                     }
-                    System.out.println("ACTUAL FRAUD : "+ (jsonRequest.has("actualFraud") ? jsonRequest.get("actualFraud") : ""));
                     request = jsonRequest.toString();
                 }
 
@@ -271,36 +250,32 @@ public class DecisionServiceInvoker implements Serializable {
                 return decisionData.toString();
             }
         };
-
-        //RDD
+        
+        //RDD 
         JavaRDD<String> responsesFromDecisionService = null;
 
         // Read data in file system
         JSONArray requestsList = run.getExecutor().getType()==JSE
-                ? serializeToJSONArray(mode=="online"
-                        ? dataSourceService
-                            .getByUid(run.getDataSourceUid())
-                            .getUri()
-                        : run.getDataSource().getUri())
-                : new JSONArray(javaSparkContext.textFile(mode=="online"
-                                                            ? dataSourceService
-                                                                .getByUid(run.getDataSourceUid())
-                                                                .getUri()
-                                                            : run.getDataSource().getUri()).collect()); //convert to json array
+                ? serializeToJSONArray(dataService
+                            .getByDataSourceUid(run.getDataSourceUid())
+                            .getUri())
+                : new JSONArray(javaSparkContext.textFile(dataService
+                                                                .getByDataSourceUid(run.getDataSourceUid())
+                                                                .getUri()).collect()); //convert to json array
         run.setRequestList(requestsList); //set request list for execution
 
         //Set run report
         RunReport currentRunReport = new RunReport();
         if(run.getRunReport().getStatus()==RunStatusType.CREATED) {
-            if(mode=="online") currentRunReport = runReportService.getByRunReportUid(run.getUid());
+            currentRunReport = runReportService.getByRunReportUid(run.getUid());
             currentRunReport.setStatus(RunStatusType.STARTED);
             currentRunReport.setNumberOfDecisions(0);
             currentRunReport.setNumberOfRequests(run.getRequestList().length());
-            if(mode=="online") runReportService.setByRunReportUid(currentRunReport);
+            runReportService.setByRunReportUid(currentRunReport);
         }
 
         //get current simulation run analytics
-        if(mode=="online") currentRunReport = runReportService.getByRunReportUid(run.getUid());
+        currentRunReport = runReportService.getByRunReportUid(run.getUid());
 
         //Timer setup
         long start = System.currentTimeMillis();
@@ -311,14 +286,10 @@ public class DecisionServiceInvoker implements Serializable {
 
         Map<String, String> headerOptions = getHeaderOptions(run.getDecisionService()); //set decision service auth in request header config
 
+
         log.info("Your simulation  is running now !");
 
         if(run.getExecutor().getType()==JSE){
-            JSONArray loanRequestsList = serializeToJSONArray(mode=="online"
-                    ? dataSourceService.getByUid(run.getDataSourceUid()).getUri()
-                    : run.getDataSource().getUri()); //convert to json array
-            run.setRequestList(loanRequestsList); //set requestList
-
             if (run.getExecutor().getMode()== Mode.REMOTE){
 
                 /*
@@ -393,9 +364,7 @@ public class DecisionServiceInvoker implements Serializable {
             }
         }
         if(run.getExecutor().getType()==SPARK_STANDALONE){
-            JavaRDD<String> requestsToDecisionService = javaSparkContext.textFile(mode=="online"
-                    ? dataSourceService.getByUid(run.getDataSourceUid()).getUri()
-                    : run.getDataSource().getUri());
+            JavaRDD<String> requestsToDecisionService = javaSparkContext.textFile(dataService.getByDataSourceUid(run.getDataSourceUid()).getUri());
             if (run.getExecutor().getMode()== Mode.REMOTE){
                 responsesFromDecisionService = requestsToDecisionService.map((Function<String, String>) request -> {
                     String responseBody = sendRequestWithParams(run, request, headerOptions).getBody();
@@ -414,7 +383,7 @@ public class DecisionServiceInvoker implements Serializable {
             //store run status, numberDecisions, progress
             currentRunReport.setStatus(RunStatusType.FINISHED);
             currentRunReport.setNumberOfDecisions(run.getRequestList().length());
-            if(mode=="online") runReportService.setByRunReportUid(currentRunReport);
+            runReportService.setByRunReportUid(currentRunReport);
             log.info("Your simulation is finished !");
         }
 
@@ -422,12 +391,12 @@ public class DecisionServiceInvoker implements Serializable {
         //set duration in database
         timeElapsed += (System.currentTimeMillis() - start);
         currentRunReport.setDuration((int)timeElapsed);
-        if(mode=="online") runReportService.setByRunReportUid(currentRunReport);
+        runReportService.setByRunReportUid(currentRunReport);
 
         //find matched data sink
         run.getDataSink().setUri(run
                                     .getDataSink().getUri()
-                                    .replace("-0."+run.getDataSink().getFormat().name().toLowerCase(),
+                                    .replace("-0"+ (run.getDataSink().getFormat().name()!=FileType.PARQUET.name() ? "."+run.getDataSink().getFormat().name().toLowerCase() : ""),
                                             String.format("-%s."+run.getDataSink().getFormat().name().toLowerCase(), run.getRunReport().getNumberOfDecisions()>999_999
                                                 ? String.valueOf(run.getRunReport().getNumberOfDecisions()).substring(0, String.valueOf(run.getRunReport().getNumberOfDecisions()).length() - 6) + "M"
                                                 : run.getRunReport().getNumberOfDecisions()>999
@@ -435,7 +404,8 @@ public class DecisionServiceInvoker implements Serializable {
                                                     : run.getRunReport().getNumberOfDecisions() )));
 
         DataManager.writeInDataSink(run.getOptimization() || !run.getOptimizationParameters().isEmpty(), run.getDataSink().getUri(), run.getDecisions(), responsesFromDecisionService, run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
-        if(mode=="online") runRepository.save(run) ;
+        runRepository.save(run) ;
+        return run;
     }
 
     public void compare2Runs(Run firstRun, Run secondRun, String notebookUri) throws IOException {
@@ -448,7 +418,7 @@ public class DecisionServiceInvoker implements Serializable {
         payload.put("firstRun", firstJson);
         payload.put("secondRun", secondJson);
         payload.put("notebookUri", notebookUri);
-        sendRequest("http://127.0.0.1:8000/simulation/compare-2-runs",
+        sendRequest(String.format("http://%s:8000/simulation/compare-2-runs", System.getenv("SIMULATTE_ANALYTIC_HOSTNAME")),
                         payload.toString(),
                         headerOptions);
     }

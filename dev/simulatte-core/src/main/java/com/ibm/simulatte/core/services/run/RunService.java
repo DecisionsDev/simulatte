@@ -4,13 +4,12 @@ import com.ibm.simulatte.core.datamodels.data.Type;
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
+import com.ibm.simulatte.core.execution.online.OnlineServiceInvoker;
 import com.ibm.simulatte.core.repositories.run.RunRepository;
 import com.ibm.simulatte.core.services.data.DataService;
-import com.ibm.simulatte.core.execution.DecisionServiceInvoker;
 import com.ibm.simulatte.core.services.simulation.SimulationService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class RunService {
     private DataService dataService;
 
     @Autowired
-    private DecisionServiceInvoker decisionServiceInvoker;
+    private OnlineServiceInvoker onlineServiceInvoker;
 
     public Run startToRun(Run newRun) throws Exception {
         //set run report
@@ -67,7 +66,7 @@ public class RunService {
         //newRun.setRequestList(loanRequestsList); //get last record in database
         runRepository.save(newRun); //save in database and set to CREATED
         newRun = runRepository.findTopByOrderByUidDesc(); //get last run recorded in database
-        decisionServiceInvoker.getDecisionsFromDecisionService(newRun);
+        onlineServiceInvoker.getDecisionsFromDecisionService(newRun);
 
         System.out.println("####################################################################################");
         System.out.println("########## THESE UIDs ALLOW YOU TO OBTAIN SIMULATION AND RUN INFORMATION ###########");

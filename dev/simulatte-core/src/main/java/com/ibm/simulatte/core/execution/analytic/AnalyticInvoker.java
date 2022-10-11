@@ -1,8 +1,9 @@
-package com.ibm.simulatte.core.execution;
+package com.ibm.simulatte.core.execution.analytic;
 
 import com.ibm.simulatte.core.datamodels.run.Run;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.ibm.simulatte.core.execution.online.OnlineServiceInvoker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class AnalyticInvoker {
 
     @Autowired
-    private DecisionServiceInvoker decisionServiceInvoker;
+    private OnlineServiceInvoker onlineServiceInvoker;
     public static int executeNotebookFromShellCommand(String absolutePath, String [] shellCommand){
         ProcessBuilder processBuilder = new ProcessBuilder(shellCommand);
         processBuilder.directory(new File(absolutePath));
@@ -46,7 +47,7 @@ public class AnalyticInvoker {
     public void executeNotebook(Run run, Map<String, String> headerOptions) throws IOException {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(run);
-        decisionServiceInvoker.sendRequest("http://127.0.0.1:8000/simulation/compute-notebook", json, headerOptions);
+        onlineServiceInvoker.sendRequest("http://127.0.0.1:8000/simulation/compute-notebook", json, headerOptions);
     }
 
     //export to html format  "-Xms1024M", "-Xmx4096M",

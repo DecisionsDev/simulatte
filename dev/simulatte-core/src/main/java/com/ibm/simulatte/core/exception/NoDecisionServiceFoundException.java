@@ -1,4 +1,4 @@
-package com.ibm.simulatte.core.exceptions;
+package com.ibm.simulatte.core.exception;
 
 public class NoDecisionServiceFoundException extends Exception {
     public NoDecisionServiceFoundException(){}

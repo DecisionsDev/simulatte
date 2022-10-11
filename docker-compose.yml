@@ -27,7 +27,12 @@ services:
       - SPRING_DATASOURCE_USERNAME=simulatte
       - SPRING_DATASOURCE_PASSWORD=simulatte
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
       - SIMULATTE_ANALYTIC_HOSTNAME=analytic-service
+
+      - OICD_AUTH_SERVER_HOST=9.144.171.110
+      - OICD_CLIENT_ID=dev
+      - OICD_CLIENT_SECRET=5WAaOXe6wWGl1Y4q2DYeLV9ZbOuzI1U2
   
   analytic-service:
     image: simulatte/analytic-service
@@ -152,23 +157,25 @@ services:
       - "3000:3000"
 
 
-  keycloak:
-    image: docker.io/bitnami/keycloak:19
-    depends_on:
-      - simulatte-db
-    ports:
-      - "8090:8090"
-    environment:
-      - KEYCLOAK_HTTP_PORT=8090
+  #keycloak:
+  #  image: docker.io/bitnami/keycloak:19
+  #  container_name: keycloak
+  #  depends_on:
+  #    - simulatte-db
+  #  ports:
+  #    - "8090:8090"
+  #  environment:
+  #    - KEYCLOAK_HTTP_PORT=8090
 
-      - KEYCLOAK_ADMIN_USER=simulatte
-      - KEYCLOAK_ADMIN_PASSWORD=simulatte
+  #    - KEYCLOAK_ADMIN_USER=simulatte
+  #    - KEYCLOAK_ADMIN_PASSWORD=simulatte
 
-      - KEYCLOAK_DATABASE_HOST=simulatte-db
-      - KEYCLOAK_DATABASE_PORT=5432
-      - KEYCLOAK_DATABASE_NAME=simulatte
-      - KEYCLOAK_DATABASE_USER=simulatte
-      - KEYCLOAK_DATABASE_PASSWORD=simulatte
+
+  #    - KEYCLOAK_DATABASE_HOST=simulatte-db
+  #    - KEYCLOAK_DATABASE_PORT=5432
+  #    - KEYCLOAK_DATABASE_NAME=simulatte
+  #    - KEYCLOAK_DATABASE_USER=simulatte
+  #    - KEYCLOAK_DATABASE_PASSWORD=simulatte
 
 
 

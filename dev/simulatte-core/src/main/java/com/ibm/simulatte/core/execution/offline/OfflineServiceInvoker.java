@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ibm.decision.run.JSONDecisionRunner;
 import com.ibm.decision.run.provider.DecisionRunnerProvider;
 import com.ibm.decision.run.provider.URLDecisionRunnerProvider;
-import com.ibm.simulatte.core.datamodels.data.Type;
+import com.ibm.simulatte.core.datamodels.data.FileType;
 import com.ibm.simulatte.core.datamodels.decisionService.executor.Mode;
 import com.ibm.simulatte.core.datamodels.optimization.Parameter;
 import com.ibm.simulatte.core.datamodels.run.Run;
@@ -40,7 +40,7 @@ import static com.ibm.simulatte.core.utils.DataManager.serializeToJSONArray;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
-public class DecisionServiceInvoker extends Invoker implements Serializable {
+public class OfflineServiceInvoker extends Invoker implements Serializable {
 
     //public URLDecisionRunnerProvider provider = null;
     //public JSONDecisionRunner runner = null;
@@ -54,7 +54,7 @@ public class DecisionServiceInvoker extends Invoker implements Serializable {
     }
     ///////////////// MANAGE SIMULATION RUN OBJECT ///////////////////
     //@Async("customAsyncExecutor")
-    public void getDecisionsFromDecisionService(Run run) throws Exception {
+    public Run getDecisionsFromDecisionService(Run run) throws Exception {
         Function<String, String> executeDecisionService = request -> {
             URLDecisionRunnerProvider provider = null;
             JSONDecisionRunner runner = null;
@@ -168,7 +168,8 @@ public class DecisionServiceInvoker extends Invoker implements Serializable {
         run.getDataSink().setUri(
                 (run.getDataSink().getUri()!=null && run.getDataSink().getUri().length()>=10)
                     ? run.getDataSink().getUri()
-                    : run.getDataSink().getFolderPath()+"/"+run.getDecisionService().getType().toString().toLowerCase()+"-22.0.1-"+ run.getName()+"-decisions-"
+                    : run.getDataSink().getFolderPath()+"/"+run.getDecisionService().getType().toString().toLowerCase()
+                        +"-22.0.1-"+ run.getName()+"-decisions-"
                         +(run.getTrace() ? "with" : "no")
                         +"trace-"+new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+"-"
                         +(
@@ -178,7 +179,11 @@ public class DecisionServiceInvoker extends Invoker implements Serializable {
                                     ? String.valueOf(run.getDecisions().length()).substring(0, String.valueOf(run.getDecisions().length()).length() - 3) + "K"
                                     : run.getDecisions().length()
                         )
-                        +"."+run.getDataSink().getFormat().name().toLowerCase());
+                        + (
+                                run.getDataSink().getFormat().name()!=FileType.PARQUET.name()
+                                        ? "."+run.getDataSink().getFormat().name().toLowerCase()
+                                        : "")
+                        );
 
         DataManager.writeInDataSink(
                 run.getOptimization() || !run.getOptimizationParameters().isEmpty(),
@@ -186,6 +191,8 @@ public class DecisionServiceInvoker extends Invoker implements Serializable {
                 run.getDecisions(),
                 responsesFromDecisionService,
                 run.getDataSink().getFormat()); //Write in data sink uri (file on user file system)
+
+        return run;
     }
 
     public void compare2Runs(Run firstRun, Run secondRun, String notebookUri) throws IOException {

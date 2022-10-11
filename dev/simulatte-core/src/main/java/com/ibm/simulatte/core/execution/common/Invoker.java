@@ -29,7 +29,7 @@ import java.util.UUID;
 public abstract class Invoker implements Serializable {
 
     //To implement
-    public abstract void getDecisionsFromDecisionService(Run run) throws Exception;
+    public abstract Run getDecisionsFromDecisionService(Run run) throws Exception;
     public abstract void compare2Runs(Run firstRun, Run secondRun, String notebookUri) throws IOException;
 
     @Autowired

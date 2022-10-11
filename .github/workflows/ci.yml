@@ -11,19 +11,49 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up JDK 8
       uses: actions/setup-java@v3
       with:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+
+    - name: Build SimuLatte-Online with Maven
       #working-directory: dev
       run: |
         cd ./dev
-        mvn install -N
+        mvn clean install -DskipTests=true -Ponline | grep -v 'Download.*'
+
+    - name: Build SimuLatte-Offline with Maven
+      #working-directory: dev
+      run: |
+        cd ./dev
+        mvn clean install -DskipTests=true -Poffline | grep -v 'Download.*'
+
+  run: 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up JDK 8
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+        cache: maven
+    #- name: Run SimuLatte-Online 
+    #  run: |
+    #    cd ./dev/simulatte-online/target
+    #    java -jar -Xms4096M -Xmx10g simulatte-online.jar
+
+    #- name: Run SimuLatte-Offline 
+    #  run: |
+    #    cd ./dev/simulatte-offline/target
+    #    java -jar -Xms4096M -Xmx10g simulatte-offline.jar
+
+    - name: Simulation test in offline mode
+      run: java -Xms2048m -Xmx10g -jar ./dev/simulatte-offline/target/simulatte-offline.jar --simulation.spec.uri=./data/schema/simulationSpec.json

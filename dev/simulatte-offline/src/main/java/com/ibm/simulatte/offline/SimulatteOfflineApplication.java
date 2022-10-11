@@ -7,15 +7,14 @@ import com.ibm.simulatte.core.datamodels.run.Run;
 import com.ibm.simulatte.core.datamodels.simulation.Simulation;
 import com.ibm.simulatte.core.dto.RunDTO;
 import com.ibm.simulatte.core.dto.SimulationDTO;
-import com.ibm.simulatte.core.exceptions.NoSimulationDescriptionFoundException;
-import com.ibm.simulatte.core.execution.offline.DecisionServiceInvoker;
+import com.ibm.simulatte.core.exception.NoSimulationDescriptionFoundException;
+import com.ibm.simulatte.core.execution.offline.OfflineServiceInvoker;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -49,10 +48,7 @@ public class SimulatteOfflineApplication implements CommandLineRunner {
     ObjectMapper objectMapper;
 
     @Autowired
-    private com.ibm.simulatte.core.execution.offline.DecisionServiceInvoker decisionServiceInvoker;
-
-    //@Value("${simulation.spec.uri}")
-    //private String newSimulationSpecUri = null;
+    private OfflineServiceInvoker offlineServiceInvoker;
 
     public static void main(String[] args) {
        SpringApplication.run(SimulatteOfflineApplication.class, args);
@@ -94,8 +90,10 @@ public class SimulatteOfflineApplication implements CommandLineRunner {
             }
             newRun.setOptimizationParameters(optimizationParamsList);
 
-            decisionServiceInvoker.getDecisionsFromDecisionService(newRun);
-            System.out.println("SIMULATION SPEC : "+newSimulationSpec);
+            Run runSpec = offlineServiceInvoker.getDecisionsFromDecisionService(newRun);
+            JSONObject datasink = new JSONObject(newSimulationObject.get("dataSink").toString());
+            datasink.put("uri", runSpec.getDataSink().getUri());
+            System.out.println("DATA SINK : "+datasink.toString(4));
         }else{
             SimulationDTO newSimulationDTO = objectMapper.readValue(newSimulationObject.toString(), SimulationDTO.class);
             Simulation newSimulation = convertDtoToEntity(newSimulationDTO);

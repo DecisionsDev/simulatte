@@ -7,7 +7,7 @@ import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
 import com.ibm.simulatte.core.datamodels.simulation.Simulation;
 import com.ibm.simulatte.core.datamodels.run.Run;
-import com.ibm.simulatte.core.execution.DecisionServiceInvoker;
+import com.ibm.simulatte.core.execution.online.OnlineServiceInvoker;
 import com.ibm.simulatte.core.services.data.DataService;
 import com.ibm.simulatte.core.services.run.RunReportService;
 import com.ibm.simulatte.core.services.run.RunService;
@@ -62,7 +62,7 @@ public class RunController {
     private DataService dataService;
 
     @Autowired
-    private DecisionServiceInvoker decisionServiceInvoker;
+    private OnlineServiceInvoker onlineServiceInvoker;
 
     @GetMapping("{simulationUid}/runs/")
     public ResponseEntity<List<Run>> getAllSimulationRuns(@PathVariable("simulationUid") int simulationUid) {
@@ -140,7 +140,7 @@ public class RunController {
             Run secondRun = runService.getRunByUid(secondRunUid);
             if(firstRun.getRunReport().getStatus()==RunStatusType.FINISHED
                     && secondRun.getRunReport().getStatus()==RunStatusType.FINISHED){
-                decisionServiceInvoker.compare2Runs(firstRun, secondRun, runsComparison.getNotebookUri());
+                onlineServiceInvoker.compare2Runs(firstRun, secondRun, runsComparison.getNotebookUri());
                 return ResponseEntity.ok(Arrays.asList(new Run[] {firstRun, secondRun}));
             }else{ throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Run "+firstRunUid+ "and/or Run "+secondRunUid+" aren't/isn't finished !");}
@@ -150,7 +150,7 @@ public class RunController {
 
     private ResponseEntity<RunReport> pauseRun(int runUid, RunReport currentRunReport) throws InterruptedException {
         if(currentRunReport.getStatus()==RunStatusType.STARTED || currentRunReport.getStatus()==RunStatusType.RUNNING){
-            decisionServiceInvoker.INTERRUPT = true; //Set action variable
+            onlineServiceInvoker.INTERRUPT = true; //Set action variable
             Thread.sleep(5000); //wait for asynchronous method to finish reading/writing in the database
             currentRunReport.setStatus(RunStatusType.PAUSED);
             runReportService.setStatus(currentRunReport.getUid(), RunStatusType.PAUSED);
@@ -161,7 +161,7 @@ public class RunController {
 
     private ResponseEntity<RunReport> continueRun(int runUid, RunReport currentRunReport) throws Exception {
         if(currentRunReport.getStatus()==RunStatusType.PAUSED){
-            decisionServiceInvoker.INTERRUPT = false; //Set action variable
+            onlineServiceInvoker.INTERRUPT = false; //Set action variable
             currentRunReport.setStatus(RunStatusType.RUNNING);
             runReportService.setStatus(currentRunReport.getUid(), RunStatusType.RUNNING);
             Run currentRun = runService.getRunByUid(runUid);
@@ -169,7 +169,7 @@ public class RunController {
                     .getByDataSourceUid(currentRun.getDataSourceUid())
                     .getUri()); //set loan requests list for current run object
             currentRun.setRequestList(loanRequestsList);
-            decisionServiceInvoker.getDecisionsFromDecisionService(currentRun);
+            onlineServiceInvoker.getDecisionsFromDecisionService(currentRun);
             return ResponseEntity.ok(currentRunReport);
         }else {throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                 "run with Uid = "+runUid+" isn't paused now!");}
@@ -177,7 +177,7 @@ public class RunController {
 
     private ResponseEntity<RunReport> stopRun(int runUid, RunReport currentRunReport) throws InterruptedException {
         if(currentRunReport.getStatus()!= RunStatusType.FINISHED && currentRunReport.getStatus()!= RunStatusType.STOPPED){
-            decisionServiceInvoker.INTERRUPT = true; //Set action variable
+            onlineServiceInvoker.INTERRUPT = true; //Set action variable
             if(currentRunReport.getStatus()!=RunStatusType.PAUSED) Thread.sleep(5000); //wait for asynchronous method to finish reading/writing in the database
             RunReport updatedRunReport = runReportService.getByRunReportUid(runUid);
             updatedRunReport.setStatus(RunStatusType.STOPPED);
