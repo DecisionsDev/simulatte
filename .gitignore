@@ -83,3 +83,8 @@ notebooks/*.ipynb_checkpoints
 notebooks/__pycache__
 notebooks/optimization/**
 !notebooks/optimization/README.md
+
+
+## Data for monitoring 
+./data/prometheus
+./data/grafana
