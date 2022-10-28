@@ -74,17 +74,18 @@ At the end you should see all containers (ODM exluded in this case) running as f
  ⠿ Container analytic-service    Started
  ```
 
-### Ports
-Be aware that Simulatte will use by default the following ports :
+#### Ports
+Be aware that Simulatte will use by default the following ports:
    * port **3000** for grafana
    * port **8080** for simulatte online
-   * port **8888** for jupiter notebooks
-   * port **4040** for spark jobs monitoring
+   * port **8888** for Jupyter notebooks
+   * port **4040** for Spark jobs monitoring
    * port **9060** only for ODM image use
    * port **9443** only for ODM image use
    * port **5432** for database
-   * port **9090** for prometheus
-<br>In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
+   * port **9090** for Prometheus
+   
+In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
 
 To use simulatte notebooks, run the command below:
 ```bash
