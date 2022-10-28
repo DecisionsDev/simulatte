@@ -127,12 +127,12 @@ public abstract class Invoker implements Serializable {
                 : "Key 'executionTrace' not available in response object."
                 : "empty") ;
         decision.put("response", run.getDecisionService().getType()==Type.ODM
-                ? responseBody
+                ? jsonResponseBody
                 : run.getDecisionService().getType()==Type.ADS && run.getTrace()
                 ? jsonResponseBody.has("output")
                 ? new JSONObject(jsonResponseBody.remove("output").toString())
                 .put("__DecisionID__", UUID.randomUUID().toString())
-                : new JSONObject(jsonResponseBody.toString())
+                : jsonResponseBody
                 .put("__DecisionID__", UUID.randomUUID().toString())
                 : jsonResponseBody.put("__DecisionID__", UUID.randomUUID().toString()));
 

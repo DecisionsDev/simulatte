@@ -39,42 +39,56 @@ Move to the project directory.
 ```bash
 cd simulatte
 ```
-### Pre requisites
-Docker installed
-Be aware that Simulatte will use the following ports :
-- port **3000** for grafana
-- port **8080** for simulatte online
-- port **8888** for jupiter notebooks
-- port **4040** for spark jobs monitoring
-- port **9060** only for ODM image use
-- port **9443** only for ODM image use
-- port **5432** for database
-- port **9090** for prometheus
-
 ### Configure Decision Service invocation
-Connect your SimuLatte instance with ADS or ODM:
+SimuLatte comes by default with a standalone ODM Docker container.
+To run simulations with IBM ADS or another ODM setup please follow the following configuration steps:
    * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
    * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
    
+
 ### Run
 Run docker compose commands 
 ```bash
 docker compose build 
+```
+
+Note: If you don't configure an ADS connection then you will face the following error:
+```bash
+ERROR [simulatte/simulation-service:latest stage-1 3/3] COPY --from=builder /builder/simulatte-online/t  0.0s
+```
+Reason is that the ADS Java libraries are missing to build simulatte. Neverthess SimuLatte is good to manage simulations through remote invocationswith ODM.
+
+```bash
 docker compose up -d
 ```
 
-At the end you should see all containers (ODM exluded in this case) running as follows:
+At the end you should see all containers running as follows:
 ```bash
+[+] Running 1/1
+ ⠿ grafana Pulled                           1.4s                                                                                         
 [+] Running 7/7
- ⠿ Network simulatte_default     Created                                                                                                                 
- ⠿ Container notebooks           Started                                                                                                                 
- ⠿ Container simulatte-db        Healthy                                                                                                                 
- ⠿ Container prometheus          Started                                                                                                                 
- ⠿ Container grafana             Started                                                                                                                 
- ⠿ Container simulation-service  Started                                                                                                                 
- ⠿ Container analytic-service    Started
+ ⠿ Container simulatte-db        Healthy    11.4s
+ ⠿ Container prometheus          Started    0.6s
+ ⠿ Container notebooks           Started    0.9s
+ ⠿ Container simulation-service  Started    12.0s
+ ⠿ Container analytic-service    Started    12.0s
+ ⠿ Container grafana             Started    1.3s
+ ⠿ Container odm                 Started     0.7s
  ```
- 
+
+#### Ports
+Be aware that Simulatte uses by default the following ports:
+   * port 3000 for grafana
+   * port **8080** for simulatte online
+   * port **8888** for Jupyter notebooks
+   * port **4040** for Spark jobs monitoring
+   * port **9060** only for ODM image use
+   * port **9443** only for ODM image use
+   * port **5432** for database
+   * port **9090** for Prometheus
+   
+In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
+
 To use simulatte notebooks, run the command below:
 ```bash
 docker logs notebooks
@@ -86,7 +100,12 @@ You see the Jupyter web page.
 
 On the left side navigate into the `work/notebooks` hierarchy.
 You see ADS and ODM folders. <br>
-Select the decisioning capability ADS by default. <br>
+#### ODM
+Select the decisioning capability ODM. <br>
+Select notebook for loanvalidation. <br>
+Run all cells. <br>
+#### ADS
+Select the decisioning capability ADS. <br>
 Select notebook for loyalty. <br>
 Run all cells. <br>
 Congratulations you have created a decision simulation, run it, to get insights about how your logic applies to the sampel dataset!
