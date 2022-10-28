@@ -68,6 +68,7 @@ Note: If you don't configure an ADS connection you will face the following error
 ```bash
 ERROR [simulatte/simulation-service:latest stage-1 3/3] COPY --from=builder /builder/simulatte-online/t  0.0s
 ```
+Reason is that the ADS Java libraries are missing to build simulatte. Neverthess SimuLatte is good to manage simulations through remote invocationswith ODM.
 
 ```bash
 docker compose up -d
