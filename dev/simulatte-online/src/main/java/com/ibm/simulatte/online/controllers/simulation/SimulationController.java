@@ -89,20 +89,6 @@ public class SimulationController {
         return ResponseEntity.ok("<h1>SIMULATTE</h1>");
     }
 
-    //@RolesAllowed({"user", "admin", })
-    @GetMapping("/test")
-    public String testPage(){
-        System.out.println("SIMULATTE DESCRIPTION");
-        return "<h1>SIMULATTE</h1>";
-    }
-
-    //@RolesAllowed("admin")
-    @GetMapping("/admin")
-    public ResponseEntity<String> adminPage(){
-        System.out.println("SIMULATTE ADMIN CONSOLE");
-        return ResponseEntity.ok("<h1>SIMULATTE ADMIN CONSOLE</h1>");
-    }
-
     private Simulation convertDtoToEntity(SimulationDTO simulationDto)  {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT) ;
         return  modelMapper.map(simulationDto, Simulation.class);
