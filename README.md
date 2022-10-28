@@ -78,7 +78,7 @@ At the end you should see all containers running as follows:
 
 #### Ports
 Be aware that Simulatte uses by default the following ports:
-   * port **3000** for grafana
+   * port 3000 for grafana
    * port **8080** for simulatte online
    * port **8888** for Jupyter notebooks
    * port **4040** for Spark jobs monitoring
@@ -100,7 +100,12 @@ You see the Jupyter web page.
 
 On the left side navigate into the `work/notebooks` hierarchy.
 You see ADS and ODM folders. <br>
-Select the decisioning capability ADS by default. <br>
+#### ODM
+Select the decisioning capability ODM. <br>
+Select notebook for loanvalidation. <br>
+Run all cells. <br>
+#### ADS
+Select the decisioning capability ADS. <br>
 Select notebook for loyalty. <br>
 Run all cells. <br>
 Congratulations you have created a decision simulation, run it, to get insights about how your logic applies to the sampel dataset!
