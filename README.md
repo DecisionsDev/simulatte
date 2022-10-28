@@ -74,7 +74,7 @@ At the end you should see all containers (ODM exluded in this case) running as f
  ⠿ Container analytic-service    Started
  ```
 
-```### Ports
+### Ports
 Be aware that Simulatte will use by default the following ports :
 - port **3000** for grafana
 - port **8080** for simulatte online
