@@ -38,18 +38,6 @@ git clone git@github.com:DecisionsDev/simulatte.git
 Move to the project directory.
 ```bash
 cd simulatte
-```
-### Pre requisites
-Docker installed
-Be aware that Simulatte will use the following ports :
-- port **3000** for grafana
-- port **8080** for simulatte online
-- port **8888** for jupiter notebooks
-- port **4040** for spark jobs monitoring
-- port **9060** only for ODM image use
-- port **9443** only for ODM image use
-- port **5432** for database
-- port **9090** for prometheus
 
 ### Configure Decision Service invocation
 SimuLatte comes by default with a standalone ODM Docker container.
@@ -85,7 +73,19 @@ At the end you should see all containers (ODM exluded in this case) running as f
  ⠿ Container simulation-service  Started                                                                                                                 
  ⠿ Container analytic-service    Started
  ```
- 
+
+```### Ports
+Be aware that Simulatte will use by default the following ports :
+- port **3000** for grafana
+- port **8080** for simulatte online
+- port **8888** for jupiter notebooks
+- port **4040** for spark jobs monitoring
+- port **9060** only for ODM image use
+- port **9443** only for ODM image use
+- port **5432** for database
+- port **9090** for prometheus
+In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
+
 To use simulatte notebooks, run the command below:
 ```bash
 docker logs notebooks
