@@ -52,14 +52,24 @@ Be aware that Simulatte will use the following ports :
 - port **9090** for prometheus
 
 ### Configure Decision Service invocation
-Connect your SimuLatte instance with ADS or ODM:
+SimuLatte comes by default with a standalone ODM Docker container.
+To run simulations with IBM ADS or another ODM setup please follow the following configuration steps:
    * [Configure with ADS](docs/CONNECT_ADS.md "Configure with ADS")
    * [Configure with ODM](docs/CONNECT_ODM.md "Configure with ODM")
    
+
 ### Run
 Run docker compose commands 
 ```bash
 docker compose build 
+```
+
+Note: If you don't configure an ADS connection you will face the following error:
+```bash
+ERROR [simulatte/simulation-service:latest stage-1 3/3] COPY --from=builder /builder/simulatte-online/t  0.0s
+```
+
+```bash
 docker compose up -d
 ```
 
