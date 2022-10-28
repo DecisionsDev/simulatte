@@ -53,7 +53,7 @@ public class SimulationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "create a successful simulation object"),
             @ApiResponse(responseCode = "404", description = "Fail to create simulation object") })
-    @RolesAllowed("user")
+    //@RolesAllowed("user")
     @PostMapping("/create")
     public ResponseEntity<Simulation> createSimulation(@RequestBody SimulationDTO newSimulationDTO) {
         Simulation newSimulation = convertDtoToEntity(newSimulationDTO);
@@ -82,21 +82,21 @@ public class SimulationController {
         return ResponseEntity.ok(simulationService.update(updatedSimulation));
     }
 
-    @RolesAllowed({"user", "admin"})
+    //@RolesAllowed({"user", "admin"})
     @GetMapping("/about")
     public ResponseEntity<String> landingPage(){
         System.out.println("SIMULATTE DESCRIPTION");
         return ResponseEntity.ok("<h1>SIMULATTE</h1>");
     }
 
-    @RolesAllowed({"user", "admin", })
+    //@RolesAllowed({"user", "admin", })
     @GetMapping("/test")
     public String testPage(){
         System.out.println("SIMULATTE DESCRIPTION");
         return "<h1>SIMULATTE</h1>";
     }
 
-    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
     @GetMapping("/admin")
     public ResponseEntity<String> adminPage(){
         System.out.println("SIMULATTE ADMIN CONSOLE");

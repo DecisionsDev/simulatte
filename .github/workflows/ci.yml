@@ -36,6 +36,7 @@ jobs:
         mvn clean install -DskipTests=true -Poffline | grep -v 'Download.*'
 
   run: 
+    needs: build
     runs-on: ubuntu-latest
 
     steps:

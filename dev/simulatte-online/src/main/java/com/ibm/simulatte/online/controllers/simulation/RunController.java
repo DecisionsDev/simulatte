@@ -7,7 +7,7 @@ import com.ibm.simulatte.core.datamodels.run.RunReport;
 import com.ibm.simulatte.core.datamodels.run.RunStatusType;
 import com.ibm.simulatte.core.datamodels.simulation.Simulation;
 import com.ibm.simulatte.core.datamodels.run.Run;
-import com.ibm.simulatte.core.execution.online.OnlineServiceInvoker;
+import com.ibm.simulatte.core.executions.online.OnlineServiceInvoker;
 import com.ibm.simulatte.core.services.data.DataService;
 import com.ibm.simulatte.core.services.run.RunReportService;
 import com.ibm.simulatte.core.services.run.RunService;

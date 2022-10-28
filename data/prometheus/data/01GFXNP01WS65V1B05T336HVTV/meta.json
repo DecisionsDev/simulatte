@@ -1,0 +1,17 @@
+{
+	"ulid": "01GFXNP01WS65V1B05T336HVTV",
+	"minTime": 1666354579509,
+	"maxTime": 1666360800000,
+	"stats": {
+		"numSamples": 2785,
+		"numSeries": 534,
+		"numChunks": 534
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GFXNP01WS65V1B05T336HVTV"
+		]
+	},
+	"version": 1
+}
