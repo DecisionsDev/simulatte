@@ -64,7 +64,7 @@ Run docker compose commands
 docker compose build 
 ```
 
-Note: If you don't configure an ADS connection you will face the following error:
+Note: If you don't configure an ADS connection then you will face the following error:
 ```bash
 ERROR [simulatte/simulation-service:latest stage-1 3/3] COPY --from=builder /builder/simulatte-online/t  0.0s
 ```
