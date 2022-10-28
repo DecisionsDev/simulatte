@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("v1/actions")
 @Tag(name = "Action", description = "Action API")
 public class Action {
-
+    /*
     @Autowired
 
 
@@ -46,5 +46,5 @@ public class Action {
     public ResponseEntity<String> resetDatabase() {
         return ResponseEntity.ok("Fail to delete all.");
     }
-
+    */
 }
