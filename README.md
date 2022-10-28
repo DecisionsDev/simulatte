@@ -38,7 +38,7 @@ git clone git@github.com:DecisionsDev/simulatte.git
 Move to the project directory.
 ```bash
 cd simulatte
-
+```
 ### Configure Decision Service invocation
 SimuLatte comes by default with a standalone ODM Docker container.
 To run simulations with IBM ADS or another ODM setup please follow the following configuration steps:
@@ -84,7 +84,7 @@ Be aware that Simulatte will use by default the following ports :
 - port **9443** only for ODM image use
 - port **5432** for database
 - port **9090** for prometheus
-<br>In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
+<br><br>In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
 
 To use simulatte notebooks, run the command below:
 ```bash
