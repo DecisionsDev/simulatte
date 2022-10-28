@@ -64,14 +64,16 @@ docker compose up -d
 
 At the end you should see all containers (ODM exluded in this case) running as follows:
 ```bash
+[+] Running 1/1
+ ⠿ grafana Pulled                                                                                                                                                                                                           1.4s
 [+] Running 7/7
- ⠿ Network simulatte_default     Created                                                                                                                 
- ⠿ Container notebooks           Started                                                                                                                 
- ⠿ Container simulatte-db        Healthy                                                                                                                 
- ⠿ Container prometheus          Started                                                                                                                 
- ⠿ Container grafana             Started                                                                                                                 
- ⠿ Container simulation-service  Started                                                                                                                 
- ⠿ Container analytic-service    Started
+ ⠿ Container simulatte-db        Healthy                                                                                                                                                                                   11.4s
+ ⠿ Container prometheus          Started                                                                                                                                                                                    0.6s
+ ⠿ Container notebooks           Started                                                                                                                                                                                    0.9s
+ ⠿ Container simulation-service  Started                                                                                                                                                                                   12.0s
+ ⠿ Container analytic-service    Started                                                                                                                                                                                   12.0s
+ ⠿ Container grafana             Started                                                                                                                                                                                    1.3s
+ ⠿ Container odm                 Started                                                                                                                                                                                    0.7s
  ```
 
 #### Ports
