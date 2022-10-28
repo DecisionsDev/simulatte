@@ -62,22 +62,22 @@ Reason is that the ADS Java libraries are missing to build simulatte. Neverthess
 docker compose up -d
 ```
 
-At the end you should see all containers (ODM exluded in this case) running as follows:
+At the end you should see all containers running as follows:
 ```bash
 [+] Running 1/1
- ⠿ grafana Pulled                                                                                                                                                                                                           1.4s
+ ⠿ grafana Pulled                           1.4s                                                                                         
 [+] Running 7/7
- ⠿ Container simulatte-db        Healthy                                                                                                                                                                                   11.4s
- ⠿ Container prometheus          Started                                                                                                                                                                                    0.6s
- ⠿ Container notebooks           Started                                                                                                                                                                                    0.9s
- ⠿ Container simulation-service  Started                                                                                                                                                                                   12.0s
- ⠿ Container analytic-service    Started                                                                                                                                                                                   12.0s
- ⠿ Container grafana             Started                                                                                                                                                                                    1.3s
- ⠿ Container odm                 Started                                                                                                                                                                                    0.7s
+ ⠿ Container simulatte-db        Healthy    11.4s
+ ⠿ Container prometheus          Started    0.6s
+ ⠿ Container notebooks           Started    0.9s
+ ⠿ Container simulation-service  Started    12.0s
+ ⠿ Container analytic-service    Started    12.0s
+ ⠿ Container grafana             Started    1.3s
+ ⠿ Container odm                 Started     0.7s
  ```
 
 #### Ports
-Be aware that Simulatte will use by default the following ports:
+Be aware that Simulatte uses by default the following ports:
    * port **3000** for grafana
    * port **8080** for simulatte online
    * port **8888** for Jupyter notebooks
