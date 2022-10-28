@@ -84,7 +84,7 @@ Be aware that Simulatte will use by default the following ports :
 - port **9443** only for ODM image use
 - port **5432** for database
 - port **9090** for prometheus
-In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
+<b>In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
 
 To use simulatte notebooks, run the command below:
 ```bash
