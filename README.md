@@ -89,6 +89,8 @@ Be aware that Simulatte uses by default the following ports:
    
 In case these port numbers collide with existing applications you can change then in the docker-compose.yml.
 
+The OpenAPI UI is available at http://localhost:8080/swagger-ui/index.html
+
 To use simulatte notebooks, run the command below:
 ```bash
 docker logs notebooks
